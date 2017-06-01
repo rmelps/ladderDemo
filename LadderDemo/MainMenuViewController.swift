@@ -148,7 +148,8 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
                         } else {
                             dbRef = self.userDBRef
                         }
-                        dbRef.setValue(self.signedInUser?.toAny())
+                        let personalRef = dbRef.child(user!.uid)
+                        personalRef.setValue(self.signedInUser?.toAny())
                     } else {
                         print(error?.localizedDescription ?? "description not found")
                     }
