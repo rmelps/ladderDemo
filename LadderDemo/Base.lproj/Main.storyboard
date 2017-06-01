@@ -108,6 +108,7 @@
                         <outlet property="signInEmailTextField" destination="7jf-fg-B8m" id="Y7U-rJ-Yfz"/>
                         <outlet property="signInPasswordTextField" destination="dHf-My-ZKm" id="Eew-fc-ab1"/>
                         <outlet property="signInPopupView" destination="BoQ-H1-1y8" id="RSW-l7-sPh"/>
+                        <outlet property="signUpAndEnterButton" destination="E8j-jC-bQE" id="Uo9-17-OxT"/>
                         <outlet property="signUpButton" destination="6dH-V0-lzT" id="oRw-Nt-0j1"/>
                         <outlet property="signUpButtonVertConstraint" destination="ZDR-qy-RDO" id="dHV-KL-xCJ"/>
                         <outlet property="signUpPopupView" destination="nCZ-IW-X0R" id="cOi-7H-kTu"/>
@@ -120,8 +121,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="367" height="232"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="jPn-qu-7aS">
-                            <rect key="frame" x="20" y="62.5" width="327" height="107"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jPn-qu-7aS">
+                            <rect key="frame" x="20" y="34.5" width="327" height="163"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66M-wG-rOQ">
                                     <rect key="frame" x="3" y="0.0" width="321" height="20.5"/>
@@ -130,23 +131,30 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jf-fg-B8m">
-                                    <rect key="frame" x="3" y="22.5" width="321" height="30"/>
+                                    <rect key="frame" x="3" y="28.5" width="321" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-rM-XGe">
-                                    <rect key="frame" x="3" y="54.5" width="321" height="20.5"/>
+                                    <rect key="frame" x="3" y="66.5" width="321" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-My-ZKm">
-                                    <rect key="frame" x="3" y="77" width="321" height="30"/>
+                                    <rect key="frame" x="3" y="95" width="321" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-Cp-eha">
+                                    <rect key="frame" x="3" y="133" width="321" height="30"/>
+                                    <state key="normal" title="Sign In"/>
+                                    <connections>
+                                        <action selector="willSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbk-5N-3im"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="dHf-My-ZKm" firstAttribute="leading" secondItem="jPn-qu-7aS" secondAttribute="leading" constant="3" id="P4F-JQ-IhZ"/>
@@ -155,16 +163,21 @@
                                 <constraint firstItem="ZTw-rM-XGe" firstAttribute="leading" secondItem="jPn-qu-7aS" secondAttribute="leading" constant="3" id="csT-rp-LHY"/>
                                 <constraint firstAttribute="trailing" secondItem="dHf-My-ZKm" secondAttribute="trailing" constant="3" id="kSk-el-VTU"/>
                                 <constraint firstItem="66M-wG-rOQ" firstAttribute="leading" secondItem="jPn-qu-7aS" secondAttribute="leading" constant="3" id="pPO-Es-Yof"/>
+                                <constraint firstAttribute="trailing" secondItem="SrW-Cp-eha" secondAttribute="trailing" constant="3" id="yoo-aQ-dov"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="jPn-qu-7aS" firstAttribute="leading" secondItem="BoQ-H1-1y8" secondAttribute="leading" constant="20" id="HKQ-Bc-xtg"/>
                         <constraint firstItem="jPn-qu-7aS" firstAttribute="centerY" secondItem="BoQ-H1-1y8" secondAttribute="centerY" id="Irl-cU-zDl"/>
                         <constraint firstItem="jPn-qu-7aS" firstAttribute="centerX" secondItem="BoQ-H1-1y8" secondAttribute="centerX" id="PbD-Xa-bZ1"/>
                         <constraint firstAttribute="trailing" secondItem="jPn-qu-7aS" secondAttribute="trailing" constant="20" id="vpQ-95-ECU"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="raf-sP-9u4" appends="YES" id="Xzw-up-NMy"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" id="nCZ-IW-X0R">
                     <rect key="frame" x="0.0" y="0.0" width="254" height="334"/>
@@ -244,12 +257,18 @@
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nya-cX-tgZ">
                                             <rect key="frame" x="53" y="0.0" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="didSetSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="95z-op-YmQ"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8j-jC-bQE">
                                     <rect key="frame" x="0.0" y="306" width="211" height="30"/>
                                     <state key="normal" title="Sign Up"/>
+                                    <connections>
+                                        <action selector="willSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jzf-Tn-7pQ"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -268,13 +287,27 @@
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="0w2-72-8Oc" firstAttribute="centerX" secondItem="nCZ-IW-X0R" secondAttribute="centerX" id="9kd-op-exx"/>
                         <constraint firstAttribute="trailing" secondItem="0w2-72-8Oc" secondAttribute="trailing" constant="20" id="JJt-eN-sN6"/>
                         <constraint firstItem="0w2-72-8Oc" firstAttribute="centerY" secondItem="nCZ-IW-X0R" secondAttribute="centerY" id="guw-kj-7tr"/>
                         <constraint firstItem="0w2-72-8Oc" firstAttribute="leading" secondItem="nCZ-IW-X0R" secondAttribute="leading" constant="20" id="pEL-bp-o2g"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="0t4-KN-YfS" appends="YES" id="arQ-2g-Xe5"/>
+                    </connections>
                 </view>
+                <tapGestureRecognizer id="raf-sP-9u4">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="jPl-rK-sHm"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0t4-KN-YfS">
+                    <connections>
+                        <action selector="onTap2:" destination="BYZ-38-t0r" id="Q9G-ak-AR9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>

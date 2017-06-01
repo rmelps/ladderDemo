@@ -14,6 +14,7 @@
 		950A5C7F1EDF6F29003A893B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950A5C7E1EDF6F29003A893B /* Assets.xcassets */; };
 		950A5C821EDF6F29003A893B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */; };
 		950A5C8A1EDF7B0D003A893B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950A5C891EDF7B0D003A893B /* GoogleService-Info.plist */; };
+		950A5C8C1EDFA3B6003A893B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C8B1EDFA3B6003A893B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		950A5C811EDF6F29003A893B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		950A5C831EDF6F29003A893B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		950A5C891EDF7B0D003A893B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		950A5C8B1EDFA3B6003A893B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				950A5C771EDF6F29003A893B /* AppDelegate.swift */,
+				950A5C8F1EDFA3C7003A893B /* Model */,
 				950A5C791EDF6F29003A893B /* MainMenuViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
@@ -80,6 +83,14 @@
 				950A5C891EDF7B0D003A893B /* GoogleService-Info.plist */,
 			);
 			path = LadderDemo;
+			sourceTree = "<group>";
+		};
+		950A5C8F1EDFA3C7003A893B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				950A5C8B1EDFA3B6003A893B /* User.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		F34B79695D4D59109A0E34C3 /* Pods */ = {
@@ -218,6 +229,7 @@
 			files = (
 				950A5C7A1EDF6F29003A893B /* MainMenuViewController.swift in Sources */,
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
+				950A5C8C1EDFA3B6003A893B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

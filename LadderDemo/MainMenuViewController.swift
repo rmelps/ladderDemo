@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, UITextFieldDelegate {
     
     // Button properties
     @IBOutlet weak var signInButton: UIButton!
@@ -40,6 +41,7 @@ class MainMenuViewController: UIViewController {
     // Grouping stackview objects to save space
     var imageViews = [UIImageView]()
     var effectViews = [UIVisualEffectView]()
+    var textFields = [UITextField]()
     
     // Sign Up fields
     @IBOutlet weak var userLabel: UILabel!
@@ -49,6 +51,16 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var signUpAndEnterButton: UIButton!
+    
+    // FIRDatabase and Profile References
+    var userDBRef: FIRDatabaseReference!
+    var coachDBRef: FIRDatabaseReference!
+    var signedInUser: User?
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,6 +73,15 @@ class MainMenuViewController: UIViewController {
         imageViews.append(mickeyImageView)
         effectViews.append(rockyVisualEffectView)
         effectViews.append(mickeyVisualEffectView)
+        
+        textFields.append(emailAddressTextField)
+        textFields.append(firstNameTextField)
+        textFields.append(lastNameTextField)
+        textFields.append(passwordTextField)
+        textFields.append(confirmPasswordTextField)
+        
+        textFields.append(signInEmailTextField)
+        textFields.append(signInPasswordTextField)
         
         let inSize = CGSize(width: UIScreen.main.bounds.width * 0.90, height: UIScreen.main.bounds.width * 0.90)
         let upSize = CGSize(width: UIScreen.main.bounds.width * 0.90, height: UIScreen.main.bounds.width * 1.3)
@@ -80,6 +101,78 @@ class MainMenuViewController: UIViewController {
             effect.layer.cornerRadius = 3.0
         }
         
+        for field in textFields {
+            field.delegate = self
+            field.returnKeyType = .done
+            field.keyboardType = .emailAddress
+        }
+        
+        passwordTextField.isSecureTextEntry = true
+        signInPasswordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
+        
+        userLabel.text = "User"
+        userSwitch.isOn = false
+        userSwitch.tintColor = .blue
+        
+        userDBRef = FIRDatabase.database().reference().child("users")
+        coachDBRef = FIRDatabase.database().reference().child("coaches")
+        
+    }
+    @IBAction func didSetSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            userLabel.text = "Coach"
+        } else {
+            userLabel.text = "User"
+        }
+    }
+    @IBAction func willSignUp(_ sender: UIButton) {
+        print("signing up...")
+        
+        guard !emailAddressTextField.text!.isEmpty, !firstNameTextField.text!.isEmpty, !lastNameTextField.text!.isEmpty, !passwordTextField.text!.isEmpty, !confirmPasswordTextField.text!.isEmpty else {
+            print("fill in the fields!")
+            return
+        }
+        
+        if let email = emailAddressTextField.text, let first = firstNameTextField.text, let last = lastNameTextField.text, let password = passwordTextField.text, let confirm = confirmPasswordTextField.text {
+            
+            print("all fields populated")
+            
+            if password == confirm {
+                FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error: Error?) in
+                    if error == nil {
+                        self.signedInUser = User(uid: user!.uid, email: user!.email!, firstName: first, lastName: last)
+                        var dbRef = FIRDatabaseReference()
+                        if self.userSwitch.isOn {
+                            dbRef = self.coachDBRef
+                        } else {
+                            dbRef = self.userDBRef
+                        }
+                        dbRef.setValue(self.signedInUser?.toAny())
+                    } else {
+                        print(error?.localizedDescription ?? "description not found")
+                    }
+                })
+            } else {
+                print("passwords are not the same!")
+            }
+            
+        } else {
+            print("could not create user")
+        }
+        
+    }
+    @IBAction func willSignIn(_ sender: UIButton) {
+    }
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        for field in textFields {
+            field.resignFirstResponder()
+        }
+    }
+    @IBAction func onTap2(_ sender: UITapGestureRecognizer) {
+        for field in textFields {
+            field.resignFirstResponder()
+        }
     }
     
     
@@ -160,6 +253,24 @@ class MainMenuViewController: UIViewController {
                 self.signInButton.isEnabled = true
                 self.signUpButton.isEnabled = true
             }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.currentView!.center.y = self.view.center.y - self.currentView!.frame.height / 4
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.currentView!.center.y = self.view.center.y
         }
     }
     
