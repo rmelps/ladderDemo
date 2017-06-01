@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-struct User {
+class User {
     let uid: String
     var email: String
     var firstName: String

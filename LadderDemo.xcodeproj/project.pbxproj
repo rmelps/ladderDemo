@@ -15,6 +15,9 @@
 		950A5C821EDF6F29003A893B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */; };
 		950A5C8A1EDF7B0D003A893B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950A5C891EDF7B0D003A893B /* GoogleService-Info.plist */; };
 		950A5C8C1EDFA3B6003A893B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C8B1EDFA3B6003A893B /* User.swift */; };
+		950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C901EDFB98F003A893B /* CoachInViewController.swift */; };
+		950A5C931EE09383003A893B /* UserInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C921EE09383003A893B /* UserInViewController.swift */; };
+		950A5C951EE09F30003A893B /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C941EE09F30003A893B /* Coach.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		950A5C831EDF6F29003A893B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		950A5C891EDF7B0D003A893B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		950A5C8B1EDFA3B6003A893B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		950A5C901EDFB98F003A893B /* CoachInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachInViewController.swift; sourceTree = "<group>"; };
+		950A5C921EE09383003A893B /* UserInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInViewController.swift; sourceTree = "<group>"; };
+		950A5C941EE09F30003A893B /* Coach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 				950A5C771EDF6F29003A893B /* AppDelegate.swift */,
 				950A5C8F1EDFA3C7003A893B /* Model */,
 				950A5C791EDF6F29003A893B /* MainMenuViewController.swift */,
+				950A5C901EDFB98F003A893B /* CoachInViewController.swift */,
+				950A5C921EE09383003A893B /* UserInViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
 				950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */,
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				950A5C8B1EDFA3B6003A893B /* User.swift */,
+				950A5C941EE09F30003A893B /* Coach.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -229,6 +238,9 @@
 			files = (
 				950A5C7A1EDF6F29003A893B /* MainMenuViewController.swift in Sources */,
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
+				950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */,
+				950A5C931EE09383003A893B /* UserInViewController.swift in Sources */,
+				950A5C951EE09F30003A893B /* Coach.swift in Sources */,
 				950A5C8C1EDFA3B6003A893B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
