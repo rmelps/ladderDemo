@@ -9,11 +9,16 @@
 import UIKit
 
 class UserInViewController: UIViewController {
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    var userTabViewController: UserTabBarViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        userTabViewController = tabBarController as! UserTabBarViewController
+        
+        welcomeLabel.text = "Welcome \(userTabViewController.signedInUser.firstName)"
     }
 
     override func didReceiveMemoryWarning() {

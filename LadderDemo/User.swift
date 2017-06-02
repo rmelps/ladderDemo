@@ -15,6 +15,7 @@ class User {
     var email: String
     var firstName: String
     var lastName: String
+    var photoPath: String
     let itemRef: FIRDatabaseReference?
     
     init(userData: FIRUser, snapShot: FIRDataSnapshot) {
@@ -39,6 +40,40 @@ class User {
         } else {
             lastName = "no last name"
         }
+        if let photoPath = snapShotValue?["photoPath"] as? String {
+            self.photoPath = photoPath
+        } else {
+            photoPath = "nil"
+        }
+    }
+    
+    init(uid: String, snapShot: FIRDataSnapshot) {
+        self.uid = uid
+        
+        itemRef = snapShot.ref
+        
+        let snapShotValue = snapShot.value as? [String: AnyObject]
+        
+        if let mail = snapShotValue?["email"] as? String {
+            email = mail
+        } else {
+            email = ""
+        }
+        if let firstName = snapShotValue?["firstName"] as? String {
+            self.firstName = firstName
+        } else {
+            firstName = "no first name"
+        }
+        if let lastName = snapShotValue?["lastName"] as? String {
+            self.lastName = lastName
+        } else {
+            lastName = "no last name"
+        }
+        if let photoPath = snapShotValue?["photoPath"] as? String {
+            self.photoPath = photoPath
+        } else {
+            photoPath = "nil"
+        }
     }
     
     init(uid:String, email:String, firstName: String, lastName: String) {
@@ -47,9 +82,10 @@ class User {
         self.firstName = firstName
         self.lastName = lastName
         self.itemRef = nil
+        self.photoPath = "nil"
     }
     
     func toAny() -> Any {
-        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName]
+        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": "nil"]
     }
 }

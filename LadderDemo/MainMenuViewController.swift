@@ -290,6 +290,23 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "showCoachScreenSegue":
+            let tabVC = segue.destination as! CoachTabBarViewController
+            tabVC.coachDBRef = self.coachDBRef
+            tabVC.userDBRef = self.userDBRef
+            tabVC.signedInCoach = self.signedInUser as! Coach
+        case "showUserScreenSegue":
+            let tabVC = segue.destination as! UserTabBarViewController
+            tabVC.coachDBRef = self.coachDBRef
+            tabVC.userDBRef = self.userDBRef
+            tabVC.signedInUser = self.signedInUser
+        default:
+            break
+        }
+    }
+    
     func animateOut() {
         
         if let view = currentView {

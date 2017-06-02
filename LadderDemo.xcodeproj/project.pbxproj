@@ -18,6 +18,10 @@
 		950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C901EDFB98F003A893B /* CoachInViewController.swift */; };
 		950A5C931EE09383003A893B /* UserInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C921EE09383003A893B /* UserInViewController.swift */; };
 		950A5C951EE09F30003A893B /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C941EE09F30003A893B /* Coach.swift */; };
+		950A5C971EE0C178003A893B /* ProfilesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C961EE0C178003A893B /* ProfilesCollectionViewController.swift */; };
+		950A5C991EE0C5CA003A893B /* CoachTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */; };
+		950A5C9B1EE0C8DE003A893B /* UserTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */; };
+		950A5C9D1EE0D4AA003A893B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		950A5C901EDFB98F003A893B /* CoachInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachInViewController.swift; sourceTree = "<group>"; };
 		950A5C921EE09383003A893B /* UserInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInViewController.swift; sourceTree = "<group>"; };
 		950A5C941EE09F30003A893B /* Coach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
+		950A5C961EE0C178003A893B /* ProfilesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilesCollectionViewController.swift; sourceTree = "<group>"; };
+		950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachTabBarViewController.swift; sourceTree = "<group>"; };
+		950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTabBarViewController.swift; sourceTree = "<group>"; };
+		950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,10 @@
 				950A5C791EDF6F29003A893B /* MainMenuViewController.swift */,
 				950A5C901EDFB98F003A893B /* CoachInViewController.swift */,
 				950A5C921EE09383003A893B /* UserInViewController.swift */,
+				950A5C961EE0C178003A893B /* ProfilesCollectionViewController.swift */,
+				950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */,
+				950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */,
+				950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
 				950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */,
@@ -239,9 +251,13 @@
 				950A5C7A1EDF6F29003A893B /* MainMenuViewController.swift in Sources */,
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
 				950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */,
+				950A5C991EE0C5CA003A893B /* CoachTabBarViewController.swift in Sources */,
+				950A5C9D1EE0D4AA003A893B /* ProfileCollectionViewCell.swift in Sources */,
+				950A5C971EE0C178003A893B /* ProfilesCollectionViewController.swift in Sources */,
 				950A5C931EE09383003A893B /* UserInViewController.swift in Sources */,
 				950A5C951EE09F30003A893B /* Coach.swift in Sources */,
 				950A5C8C1EDFA3B6003A893B /* User.swift in Sources */,
+				950A5C9B1EE0C8DE003A893B /* UserTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

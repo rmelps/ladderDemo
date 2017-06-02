@@ -31,7 +31,20 @@ class Coach: User {
         super.init(userData: userData, snapShot: snapShot)
     }
     
+    override init(uid: String, snapShot: FIRDataSnapshot) {
+        
+        let snapShotValue = snapShot.value as? [String: AnyObject]
+        
+        if let children = snapShotValue?["children"] as? [String] {
+            self.children = children
+        } else {
+            children = nil
+        }
+        
+        super.init(uid: uid, snapShot: snapShot)
+    }
+    
     override func toAny() -> Any {
-        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "children": children ?? [String]()]
+        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": "nil", "children": children ?? [String]()]
     }
 }
