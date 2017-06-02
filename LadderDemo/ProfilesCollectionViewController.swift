@@ -22,6 +22,8 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.allowsMultipleSelection = false
+        
         if let tabVC = tabBarController as? CoachTabBarViewController {
             specificTabBarController = tabVC
         } else {
@@ -160,5 +162,19 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return sectionInsets.left
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 3.0
+        cell?.layer.borderColor = UIColor.green.cgColor
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.clear.cgColor
     }
 }

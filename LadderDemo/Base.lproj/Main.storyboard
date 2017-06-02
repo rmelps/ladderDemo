@@ -367,11 +367,11 @@
             </objects>
             <point key="canvasLocation" x="2860" y="139"/>
         </scene>
-        <!--Profiles Collection View Controller-->
+        <!--Users-->
         <scene sceneID="PPH-wO-zl3">
             <objects>
-                <collectionViewController id="2TO-xh-tDK" customClass="ProfilesCollectionViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="FEt-If-a4R">
+                <collectionViewController title="Users" id="2TO-xh-tDK" customClass="ProfilesCollectionViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="FEt-If-a4R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
