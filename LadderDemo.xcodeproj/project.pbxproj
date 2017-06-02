@@ -22,6 +22,10 @@
 		950A5C991EE0C5CA003A893B /* CoachTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */; };
 		950A5C9B1EE0C8DE003A893B /* UserTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */; };
 		950A5C9D1EE0D4AA003A893B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */; };
+		95B54A481EE1BD9A00B54056 /* PromiseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A471EE1BD9A00B54056 /* PromiseCell.swift */; };
+		95B54A4A1EE1BE5C00B54056 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A491EE1BE5C00B54056 /* Promise.swift */; };
+		95B54A4E1EE1BFFE00B54056 /* PromiseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A4D1EE1BFFE00B54056 /* PromiseStore.swift */; };
+		95B54A501EE1C23D00B54056 /* AssignPromiseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachTabBarViewController.swift; sourceTree = "<group>"; };
 		950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTabBarViewController.swift; sourceTree = "<group>"; };
 		950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		95B54A471EE1BD9A00B54056 /* PromiseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseCell.swift; sourceTree = "<group>"; };
+		95B54A491EE1BE5C00B54056 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		95B54A4D1EE1BFFE00B54056 /* PromiseStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseStore.swift; sourceTree = "<group>"; };
+		95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignPromiseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,15 +96,16 @@
 			isa = PBXGroup;
 			children = (
 				950A5C771EDF6F29003A893B /* AppDelegate.swift */,
+				95B54A461EE1A9E600B54056 /* Cells */,
 				950A5C8F1EDFA3C7003A893B /* Model */,
 				950A5C791EDF6F29003A893B /* MainMenuViewController.swift */,
 				950A5C901EDFB98F003A893B /* CoachInViewController.swift */,
 				950A5C921EE09383003A893B /* UserInViewController.swift */,
 				950A5C961EE0C178003A893B /* ProfilesCollectionViewController.swift */,
-				950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */,
 				950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */,
 				950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
+				95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
 				950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */,
 				950A5C831EDF6F29003A893B /* Info.plist */,
@@ -110,8 +119,19 @@
 			children = (
 				950A5C8B1EDFA3B6003A893B /* User.swift */,
 				950A5C941EE09F30003A893B /* Coach.swift */,
+				95B54A491EE1BE5C00B54056 /* Promise.swift */,
+				95B54A4D1EE1BFFE00B54056 /* PromiseStore.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		95B54A461EE1A9E600B54056 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				95B54A471EE1BD9A00B54056 /* PromiseCell.swift */,
+				950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		F34B79695D4D59109A0E34C3 /* Pods */ = {
@@ -252,12 +272,16 @@
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
 				950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */,
 				950A5C991EE0C5CA003A893B /* CoachTabBarViewController.swift in Sources */,
+				95B54A4E1EE1BFFE00B54056 /* PromiseStore.swift in Sources */,
 				950A5C9D1EE0D4AA003A893B /* ProfileCollectionViewCell.swift in Sources */,
 				950A5C971EE0C178003A893B /* ProfilesCollectionViewController.swift in Sources */,
 				950A5C931EE09383003A893B /* UserInViewController.swift in Sources */,
+				95B54A501EE1C23D00B54056 /* AssignPromiseTableViewController.swift in Sources */,
+				95B54A481EE1BD9A00B54056 /* PromiseCell.swift in Sources */,
 				950A5C951EE09F30003A893B /* Coach.swift in Sources */,
 				950A5C8C1EDFA3B6003A893B /* User.swift in Sources */,
 				950A5C9B1EE0C8DE003A893B /* UserTabBarViewController.swift in Sources */,
+				95B54A4A1EE1BE5C00B54056 /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

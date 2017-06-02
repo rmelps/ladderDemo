@@ -12,5 +12,6 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nameLabel: UILabel!
+    var uid: User?
     
 }

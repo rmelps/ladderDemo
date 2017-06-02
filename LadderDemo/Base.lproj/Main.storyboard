@@ -371,7 +371,7 @@
         <scene sceneID="PPH-wO-zl3">
             <objects>
                 <collectionViewController title="Users" id="2TO-xh-tDK" customClass="ProfilesCollectionViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="FEt-If-a4R">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="FEt-If-a4R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -436,6 +436,56 @@
             </objects>
             <point key="canvasLocation" x="2860" y="912.5937031484259"/>
         </scene>
+        <!--Swipe Left To Assign!-->
+        <scene sceneID="VYZ-jD-1pQ">
+            <objects>
+                <tableViewController id="eGR-i0-YAM" customClass="AssignPromiseTableViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="a8J-qU-Whf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="promiseCell" id="WX7-SA-LiW" customClass="PromiseCell" customModule="LadderDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WX7-SA-LiW" id="Jrb-lv-G1o">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-4Q-5Ac">
+                                            <rect key="frame" x="166.5" y="12" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TCc-4Q-5Ac" firstAttribute="centerY" secondItem="Jrb-lv-G1o" secondAttribute="centerY" id="AGF-9m-Lyh"/>
+                                        <constraint firstItem="TCc-4Q-5Ac" firstAttribute="centerX" secondItem="Jrb-lv-G1o" secondAttribute="centerX" id="vPX-rh-9LS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="promiseLabel" destination="TCc-4Q-5Ac" id="KHT-sE-iaB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eGR-i0-YAM" id="ZQW-Te-b1k"/>
+                            <outlet property="delegate" destination="eGR-i0-YAM" id="cd4-M4-qmf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Swipe Left To Assign!" id="trh-Ug-qwa">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bQL-4D-OFP">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="eGR-i0-YAM" id="Q7w-vn-pGe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RA5-vg-iBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2860" y="1618"/>
+        </scene>
         <!--Home-->
         <scene sceneID="gOp-0b-oph">
             <objects>
@@ -476,13 +526,15 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Qwj-x0-Dcp" customClass="CoachTabBarViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="m5y-kv-3pn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="wxI-Wd-xBM" kind="relationship" relationship="viewControllers" id="fmi-VR-z85"/>
-                        <segue destination="UMf-RW-cW4" kind="relationship" relationship="viewControllers" id="bcI-qE-C8q"/>
+                        <segue destination="RjT-8A-aya" kind="relationship" relationship="viewControllers" id="HRg-4O-Xkr"/>
                         <segue destination="JVq-hf-NZz" kind="relationship" relationship="viewControllers" id="pQe-L3-VsA"/>
+                        <segue destination="UMf-RW-cW4" kind="relationship" relationship="viewControllers" id="bcI-qE-C8q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1K-qf-xGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,6 +566,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="knS-f5-J9Y" customClass="UserTabBarViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="U5X-xD-VHn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -527,6 +580,25 @@
             </objects>
             <point key="canvasLocation" x="257" y="139"/>
         </scene>
+        <!--Assign-->
+        <scene sceneID="Fqm-Xh-JBD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RjT-8A-aya" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Assign" id="Dhq-27-Yiq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pcy-rf-EyO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eGR-i0-YAM" kind="relationship" relationship="rootViewController" id="caI-dA-UfV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9M-dX-Idf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2009" y="1618"/>
+        </scene>
     </scenes>
     <resources>
         <image name="MenuButton" width="73" height="32"/>
@@ -534,7 +606,7 @@
         <image name="RockyHome" width="447" height="251"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iP2-NX-aN6"/>
-        <segue reference="hEg-sc-uIC"/>
+        <segue reference="pQe-L3-VsA"/>
+        <segue reference="bcI-qE-C8q"/>
     </inferredMetricsTieBreakers>
 </document>

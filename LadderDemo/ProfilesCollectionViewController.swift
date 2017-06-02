@@ -84,6 +84,7 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                 coachTabBarController.userDBRef.child(userForCell).observe(.value, with: { (snapShot:   FIRDataSnapshot) in
                     let user = User(uid: userForCell, snapShot: snapShot)
                     cell.nameLabel.text = user.firstName
+                    cell.uid = user
                     print("found children...")
                 
                     if user.photoPath != "nil" {
@@ -166,15 +167,20 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 3.0
-        cell?.layer.borderColor = UIColor.green.cgColor
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.green.cgColor
+        
+        if let tabVC = specificTabBarController as? CoachTabBarViewController {
+            tabVC.selectedUser = cell.uid
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 0.0
-        cell?.layer.borderColor = UIColor.clear.cgColor
+        let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
+        cell.layer.borderWidth = 0.0
+        cell.layer.borderColor = UIColor.clear.cgColor
     }
 }

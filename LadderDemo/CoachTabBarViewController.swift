@@ -16,6 +16,7 @@ class CoachTabBarViewController: UITabBarController {
     var userDBRef: FIRDatabaseReference!
     var coachDBRef: FIRDatabaseReference!
     var promiseDBRef: FIRDatabaseReference!
+    var selectedUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
