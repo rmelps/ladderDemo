@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class UserTabBarViewController: UITabBarController {
+class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     // Passed on properties after sign in
     var signedInUser: User!
@@ -20,6 +20,8 @@ class UserTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
         
         promiseDBRef = FIRDatabase.database().reference().child("promises")
         
@@ -86,6 +88,29 @@ class UserTabBarViewController: UITabBarController {
         let date = calendar.nextDate(after: today as Date, matching: nextDateComponent as DateComponents, options: direction.calendarOptions)
         
         return date! as NSDate
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let fromView: UIView = tabBarController.selectedViewController!.view
+        let toView: UIView = viewController.view
+        if fromView == toView {
+            return false
+        }
+        
+        let indexFrom = tabBarController.viewControllers!.index(of: tabBarController.selectedViewController!)
+        let indexTo = tabBarController.viewControllers!.index(of: viewController)
+        
+        if indexFrom! > indexTo! {
+            UIView.transition(from: fromView, to: toView, duration: 0.3, options: .transitionFlipFromLeft) { (complete) in
+                toView.setNeedsLayout()
+            }
+        } else {
+                UIView.transition(from: fromView, to: toView, duration: 0.3, options: .transitionFlipFromRight) { (complete) in
+                    toView.setNeedsLayout()
+            }
+        }
+        
+        return true
     }
     
 

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class CoachTabBarViewController: UITabBarController {
+class CoachTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     // Passed on properties after sign in
     var signedInCoach: Coach!
@@ -20,6 +20,8 @@ class CoachTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
         
         promiseDBRef = FIRDatabase.database().reference().child("promises")
 
@@ -73,6 +75,20 @@ class CoachTabBarViewController: UITabBarController {
         let date = calendar.nextDate(after: today as Date, matching: nextDateComponent as DateComponents, options: direction.calendarOptions)
         
         return date! as NSDate
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let fromView: UIView = tabBarController.selectedViewController!.view
+        let toView: UIView = viewController.view
+        if fromView == toView {
+            return false
+        }
+        
+        UIView.transition(from: fromView, to: toView, duration: 0.3, options: .transitionFlipFromBottom) { (complete) in
+            toView.setNeedsLayout()
+        }
+        
+        return true
     }
     
 
