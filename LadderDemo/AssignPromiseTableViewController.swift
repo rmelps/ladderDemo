@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AssignPromiseTableViewController: UITableViewController {
     
@@ -107,24 +108,58 @@ class AssignPromiseTableViewController: UITableViewController {
             self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
         delete.backgroundColor = .red
+        
         let assign = UITableViewRowAction(style: .default, title: "Assign") { (action:UITableViewRowAction, indexPath: IndexPath) in
             
             let tabVC = self.tabBarController as! CoachTabBarViewController
             
             if let user = tabVC.selectedUser {
-                let ac = UIAlertController(title: "Assign Promise", message: "Do you want to assign this promise to \(user.firstName) \(user.lastName)?", preferredStyle: .alert)
-                let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action:UIAlertAction) in
-                    let sunday = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
-                    let promise = self.promiseStore.allPromises[indexPath.row]
-                    
-                    tabVC.promiseDBRef.child("\(sunday)").child(user.uid).setValue(promise.toAny())
-                    
-                })
+                let nextSunday = tabVC.get(direction: .Next, "Sunday", considerToday: false)
+                let lastSunday = tabVC.get(direction: .Previous, "Sunday", considerToday: false)
+                
+                var message = String()
+                var confirmNext = UIAlertAction()
+                var confirmCurrent = UIAlertAction()
+                var ac = UIAlertController()
                 let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in
                 })
-                ac.addAction(confirm)
-                ac.addAction(cancel)
-                self.present(ac, animated: true, completion: nil)
+                
+                tabVC.promiseDBRef.child("\(lastSunday)").observeSingleEvent(of: .value, with: { (snapShot:FIRDataSnapshot) in
+                    if snapShot.hasChild(user.uid) {
+                        message = "Do you want to assign this promise to \(user.firstName) \(user.lastName) for next week?"
+                        ac = UIAlertController(title: "Assign Promise", message: message, preferredStyle: .alert)
+                        
+                        confirmNext = UIAlertAction(title: "Confirm", style: .default, handler: { (action:UIAlertAction) in
+                            
+                            let promise = self.promiseStore.allPromises[indexPath.row]
+                            
+                            tabVC.promiseDBRef.child("\(nextSunday)").child(user.uid).setValue(promise.toAny())
+                            
+                        })
+                        ac.addAction(confirmNext)
+                        ac.addAction(cancel)
+                        self.present(ac, animated: true, completion: nil)
+                    } else {
+                        message = "\(user.firstName) \(user.lastName) has not been assigned a promise for this week. Assign promise to the current week or next week?"
+                        ac = UIAlertController(title: "Assign Promise", message: message, preferredStyle: .alert)
+                        confirmNext = UIAlertAction(title: "Next Week", style: .default, handler: { (action:UIAlertAction) in
+                            
+                            let promise = self.promiseStore.allPromises[indexPath.row]
+                            
+                            tabVC.promiseDBRef.child("\(nextSunday)").child(user.uid).setValue(promise.toAny())
+                            
+                        })
+                        confirmCurrent = UIAlertAction(title: "Current Week", style: .default, handler: { (action:UIAlertAction) in
+                            let promise = self.promiseStore.allPromises[indexPath.row]
+                            
+                            tabVC.promiseDBRef.child("\(lastSunday)").child(user.uid).setValue(promise.toAny())
+                        })
+                        ac.addAction(confirmNext)
+                        ac.addAction(confirmCurrent)
+                        ac.addAction(cancel)
+                        self.present(ac, animated: true, completion: nil)
+                    }
+                })
             } else {
                 let ac = UIAlertController(title: "No User Selected", message: "Select a User under the User tab first", preferredStyle: .alert)
                 let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction) in
