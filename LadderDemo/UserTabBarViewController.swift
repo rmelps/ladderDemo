@@ -13,6 +13,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     // Passed on properties after sign in
     var signedInUser: User!
+    var selectedCoach: Coach?
     var userDBRef: FIRDatabaseReference!
     var coachDBRef: FIRDatabaseReference!
     var promiseDBRef: FIRDatabaseReference!

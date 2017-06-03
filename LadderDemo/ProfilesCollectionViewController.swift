@@ -26,8 +26,10 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
         
         if let tabVC = tabBarController as? CoachTabBarViewController {
             specificTabBarController = tabVC
+            self.navigationController?.title = "My Users"
         } else {
             specificTabBarController = tabBarController as? UserTabBarViewController
+            self.navigationController?.title = "Coaches"
         }
         
     }
@@ -102,6 +104,7 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                 userTabBarController.coachDBRef.child(coachForCell).observe(.value, with: { (snapShot:FIRDataSnapshot) in
                     let coach = Coach(uid: coachForCell, snapShot: snapShot)
                     cell.nameLabel.text = coach.firstName
+                    cell.uid = coach
                     
                     if coach.photoPath != "nil" {
                         print("found photo")
@@ -167,13 +170,24 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
         cell.layer.borderWidth = 3.0
         cell.layer.borderColor = UIColor.green.cgColor
         
         if let tabVC = specificTabBarController as? CoachTabBarViewController {
             tabVC.selectedUser = cell.uid
+        }
+        if let tabVC = specificTabBarController as? UserTabBarViewController {
+            tabVC.selectedCoach = cell.uid as? Coach
+            
+            if let children = tabVC.selectedCoach?.children, children.contains(tabVC.signedInUser.uid) {
+            } else {
+                if let coach = tabVC.selectedCoach {
+                    coach.children?.append(tabVC.signedInUser.uid)
+                    tabVC.coachDBRef.child(coach.uid).child("children").setValue(coach.children as Any)
+                }
+            }
+            
         }
     }
     
@@ -182,5 +196,15 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
         let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
         cell.layer.borderWidth = 0.0
         cell.layer.borderColor = UIColor.clear.cgColor
+        
+        if let tabVC = specificTabBarController as? UserTabBarViewController {
+            if let coach = tabVC.selectedCoach {
+                if coach.children!.contains(tabVC.signedInUser.uid) {
+                    let index = coach.children?.index(of: tabVC.signedInUser.uid)
+                    coach.children?.remove(at: index!)
+                    tabVC.coachDBRef.child(coach.uid).child("children").setValue(coach.children as Any)
+                }
+            }
+        }
     }
 }

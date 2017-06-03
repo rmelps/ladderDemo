@@ -50,6 +50,7 @@ class PromiseDisplayViewController: UIViewController {
                 
                 dateRef.observe(.value, with: { (snapShot:FIRDataSnapshot) in
                     if snapShot.hasChild(uid) {
+                        self.completeButton.isEnabled = true
                         let uidSnap = snapShot.childSnapshot(forPath: uid)
                         self.promise = Promise(snapShot: uidSnap)
                         self.promiseContentLabel.text = self.promise?.content
@@ -71,6 +72,9 @@ class PromiseDisplayViewController: UIViewController {
                                
                             }
                         }
+                    } else {
+                        self.completeButton.isEnabled = false
+                        self.promiseContentLabel.text = "You Haven't Assigned a Promise Yet!"
                     }
                 })
             }
@@ -87,6 +91,7 @@ class PromiseDisplayViewController: UIViewController {
                 
                 dateRef.observe(.value, with: { (snapShot:FIRDataSnapshot) in
                     if snapShot.hasChild(uid) {
+                        self.completeButton.isEnabled = true
                         let uidSnap = snapShot.childSnapshot(forPath: uid)
                         self.promise = Promise(snapShot: uidSnap)
                         self.promiseContentLabel.text = self.promise?.content
@@ -108,6 +113,9 @@ class PromiseDisplayViewController: UIViewController {
                                 
                             }
                         }
+                    } else {
+                        self.completeButton.isEnabled = false
+                        self.promiseContentLabel.text = "Your Coach Hasn't Set a Promise Yet!"
                     }
                 })
                 

@@ -14,7 +14,7 @@ class Coach: User {
     var children: [String]?
     
     override init(uid: String, email: String, firstName: String, lastName: String) {
-        children = nil
+        children = []
         super.init(uid: uid, email: email, firstName: firstName, lastName: lastName)
     }
     
@@ -25,7 +25,7 @@ class Coach: User {
         if let children = snapShotValue?["children"] as? [String] {
             self.children = children
         } else {
-            children = nil
+            children = []
         }
         
         super.init(userData: userData, snapShot: snapShot)
@@ -38,7 +38,7 @@ class Coach: User {
         if let children = snapShotValue?["children"] as? [String] {
             self.children = children
         } else {
-            children = nil
+            children = []
         }
         
         super.init(uid: uid, snapShot: snapShot)
