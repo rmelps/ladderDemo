@@ -106,7 +106,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
         
         userLabel.text = "User"
         userSwitch.isOn = false
-        userSwitch.tintColor = UIColor.darkGray
+        userSwitch.tintColor = UIColor.blue
         
         userDBRef = FIRDatabase.database().reference().child("users")
         coachDBRef = FIRDatabase.database().reference().child("coaches")
@@ -160,14 +160,29 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
                         self.animateOut()
                     } else {
                         print(error?.localizedDescription ?? "description not found")
+                        let ac = UIAlertController(title: "Error!", message: error?.localizedDescription, preferredStyle: .alert)
+                        let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+                        })
+                        ac.addAction(confirm)
+                        self.present(ac, animated: true, completion: nil)
                     }
                 })
             } else {
                 print("passwords are not the same!")
+                let ac = UIAlertController(title: "Error!", message: "Passwords are not the same!", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+                })
+                ac.addAction(confirm)
+                self.present(ac, animated: true, completion: nil)
             }
             
         } else {
             print("could not create user")
+            let ac = UIAlertController(title: "Error!", message: "Could not create user!", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+            })
+            ac.addAction(confirm)
+            self.present(ac, animated: true, completion: nil)
         }
         
     }
@@ -213,6 +228,11 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
                     })
                 } else {
                     print(error?.localizedDescription ?? "no error description found")
+                    let ac = UIAlertController(title: "Error!", message: error?.localizedDescription, preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+                    })
+                    ac.addAction(confirm)
+                    self.present(ac, animated: true, completion: nil)
                 }
             })
         }

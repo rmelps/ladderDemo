@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -317,7 +318,7 @@
         <!--Promise-->
         <scene sceneID="ayj-Kv-R6j">
             <objects>
-                <viewController id="JVq-hf-NZz" sceneMemberID="viewController">
+                <viewController id="JVq-hf-NZz" customClass="PromiseDisplayViewController" customModule="LadderDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lyd-Zj-E7e"/>
                         <viewControllerLayoutGuide type="bottom" id="1vl-Nn-nix"/>
@@ -325,13 +326,190 @@
                     <view key="view" contentMode="scaleToFill" id="v7M-6A-uZ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week's Promise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="3A5-IA-A71">
+                                <rect key="frame" x="16" y="20" width="343" height="46.5"/>
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Promise" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JaG-N5-POG">
+                                <rect key="frame" x="16" y="106" width="343" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="sVG-Z0-yJ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GurmukhiMN" family="Gurmukhi MN" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HWw-WJ-ql6">
+                                <rect key="frame" x="126" y="348" width="35" height="245"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="4XY-zr-Js5">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="sunday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4XY-zr-Js5" secondAttribute="height" multiplier="1:1" id="Maf-zr-Pfi"/>
+                                            <constraint firstAttribute="height" constant="33" id="fYM-cf-3mr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="btT-80-aqg">
+                                        <rect key="frame" x="0.0" y="35" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="monday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="94d-uv-OLS"/>
+                                            <constraint firstAttribute="width" secondItem="btT-80-aqg" secondAttribute="height" multiplier="1:1" id="YEx-xh-2Y9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="aaA-Te-jKW">
+                                        <rect key="frame" x="0.0" y="70" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="tuesday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aaA-Te-jKW" secondAttribute="height" multiplier="1:1" id="KbN-or-eYV"/>
+                                            <constraint firstAttribute="height" constant="33" id="Zbb-qC-EMv"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="hNe-5B-Xrh">
+                                        <rect key="frame" x="0.0" y="105" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="wednesday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="B4q-Bk-uTR"/>
+                                            <constraint firstAttribute="width" secondItem="hNe-5B-Xrh" secondAttribute="height" multiplier="1:1" id="bPe-f2-LfO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="b6H-3D-vU2">
+                                        <rect key="frame" x="0.0" y="140" width="35" height="35"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="thursday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="b6H-3D-vU2" secondAttribute="height" multiplier="1:1" id="7ED-4F-gnz"/>
+                                            <constraint firstAttribute="height" constant="35" id="XjB-cZ-WSE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="dXT-Tn-ye2">
+                                        <rect key="frame" x="0.0" y="177" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="friday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="9wN-rb-LEA"/>
+                                            <constraint firstAttribute="width" secondItem="dXT-Tn-ye2" secondAttribute="height" multiplier="1:1" id="PJD-Lc-fJp"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="incomplete" translatesAutoresizingMaskIntoConstraints="NO" id="8bf-hg-Viy">
+                                        <rect key="frame" x="0.0" y="212" width="33" height="33"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="saturday"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8bf-hg-Viy" secondAttribute="height" multiplier="1:1" id="SUS-1k-sTj"/>
+                                            <constraint firstAttribute="height" constant="33" id="c4x-fA-aEh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aaA-Te-jKW" firstAttribute="width" secondItem="aaA-Te-jKW" secondAttribute="height" multiplier="1:1" id="3b7-gG-Y5t"/>
+                                    <constraint firstItem="btT-80-aqg" firstAttribute="width" secondItem="btT-80-aqg" secondAttribute="height" multiplier="1:1" id="8Bh-pq-w7j"/>
+                                    <constraint firstItem="hNe-5B-Xrh" firstAttribute="width" secondItem="hNe-5B-Xrh" secondAttribute="height" multiplier="1:1" id="EVd-q7-GeI"/>
+                                    <constraint firstItem="b6H-3D-vU2" firstAttribute="width" secondItem="b6H-3D-vU2" secondAttribute="height" multiplier="1:1" id="av9-9I-4QI"/>
+                                    <constraint firstItem="dXT-Tn-ye2" firstAttribute="width" secondItem="dXT-Tn-ye2" secondAttribute="height" multiplier="1:1" id="yeL-7i-tM9"/>
+                                    <constraint firstItem="8bf-hg-Viy" firstAttribute="width" secondItem="8bf-hg-Viy" secondAttribute="height" multiplier="1:1" id="yl9-3b-uY8"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Drn-8u-H1A">
+                                <rect key="frame" x="16" y="347.5" width="90" height="245.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZp-As-cj2">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIZ-0s-ekm">
+                                        <rect key="frame" x="0.0" y="37.5" width="61.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqW-wU-nYA">
+                                        <rect key="frame" x="0.0" y="75" width="64.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKn-9F-l2a">
+                                        <rect key="frame" x="0.0" y="112.5" width="90" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-xa-yE8">
+                                        <rect key="frame" x="0.0" y="150" width="72" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rl-Ok-03F">
+                                        <rect key="frame" x="0.0" y="187.5" width="47" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tih-iW-x18">
+                                        <rect key="frame" x="0.0" y="225" width="68.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1n-xW-78r" customClass="RoundButton" customModule="LadderDemo" customModuleProvider="target">
+                                <rect key="frame" x="254" y="411" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QXa-um-vn0"/>
+                                    <constraint firstAttribute="width" constant="100" id="jFV-KF-MRI"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Complete!">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" red="0.050428137720142339" green="0.76474698967889909" blue="0.35368978034773146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="completePromise:" destination="JVq-hf-NZz" eventType="touchUpInside" id="rSu-ab-hvZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JaG-N5-POG" firstAttribute="leading" secondItem="v7M-6A-uZ9" secondAttribute="leadingMargin" id="296-QN-Ltr"/>
+                            <constraint firstItem="1vl-Nn-nix" firstAttribute="top" secondItem="HWw-WJ-ql6" secondAttribute="bottom" constant="25" id="Cpo-OR-euc"/>
+                            <constraint firstItem="3A5-IA-A71" firstAttribute="top" secondItem="Lyd-Zj-E7e" secondAttribute="bottom" id="SBF-YU-3zf"/>
+                            <constraint firstItem="h1n-xW-78r" firstAttribute="trailing" secondItem="v7M-6A-uZ9" secondAttribute="trailingMargin" constant="-5" id="Uqc-rK-YXz"/>
+                            <constraint firstItem="HWw-WJ-ql6" firstAttribute="leading" secondItem="Drn-8u-H1A" secondAttribute="trailing" constant="20" id="VF7-sm-Bch"/>
+                            <constraint firstItem="1vl-Nn-nix" firstAttribute="top" secondItem="h1n-xW-78r" secondAttribute="bottom" constant="107" id="bRl-T4-CHQ"/>
+                            <constraint firstItem="1vl-Nn-nix" firstAttribute="top" secondItem="Drn-8u-H1A" secondAttribute="bottom" constant="25" id="deb-kP-Cmb"/>
+                            <constraint firstItem="3A5-IA-A71" firstAttribute="trailing" secondItem="v7M-6A-uZ9" secondAttribute="trailingMargin" id="gNG-Gm-JZ9"/>
+                            <constraint firstItem="JaG-N5-POG" firstAttribute="top" secondItem="3A5-IA-A71" secondAttribute="bottom" constant="40" id="pR3-NF-Nsw"/>
+                            <constraint firstItem="JaG-N5-POG" firstAttribute="trailing" secondItem="v7M-6A-uZ9" secondAttribute="trailingMargin" id="sKA-sj-U5G"/>
+                            <constraint firstItem="3A5-IA-A71" firstAttribute="leading" secondItem="v7M-6A-uZ9" secondAttribute="leadingMargin" id="vQv-UJ-b4r"/>
+                            <constraint firstItem="Drn-8u-H1A" firstAttribute="leading" secondItem="v7M-6A-uZ9" secondAttribute="leadingMargin" id="yDc-6M-x1f"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Promise" id="R2y-mA-jWi"/>
+                    <connections>
+                        <outlet property="completeButton" destination="h1n-xW-78r" id="d3V-xN-rjN"/>
+                        <outlet property="fridayIndicator" destination="dXT-Tn-ye2" id="TyP-gF-09e"/>
+                        <outlet property="mondayIndicator" destination="btT-80-aqg" id="aw6-V7-JFn"/>
+                        <outlet property="promiseContentLabel" destination="JaG-N5-POG" id="Lkg-mb-Odc"/>
+                        <outlet property="saturdayIndicator" destination="8bf-hg-Viy" id="d3d-qd-0LK"/>
+                        <outlet property="sundayIndicator" destination="4XY-zr-Js5" id="hBG-XA-jub"/>
+                        <outlet property="thursdayIndicator" destination="b6H-3D-vU2" id="KBv-c9-1pj"/>
+                        <outlet property="tuesdayIndicator" destination="aaA-Te-jKW" id="fgt-1F-H8x"/>
+                        <outlet property="wednesdayIndicator" destination="hNe-5B-Xrh" id="irD-nB-iO5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIo-ln-ttx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2009" y="-627"/>
+            <point key="canvasLocation" x="2008.8" y="-627.4362818590705"/>
         </scene>
         <!--Home-->
         <scene sceneID="Pag-q3-EKb">
@@ -604,6 +782,7 @@
         <image name="MenuButton" width="73" height="32"/>
         <image name="MickeyHome" width="800" height="438"/>
         <image name="RockyHome" width="447" height="251"/>
+        <image name="incomplete" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pQe-L3-VsA"/>

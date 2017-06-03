@@ -26,6 +26,9 @@
 		95B54A4A1EE1BE5C00B54056 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A491EE1BE5C00B54056 /* Promise.swift */; };
 		95B54A4E1EE1BFFE00B54056 /* PromiseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A4D1EE1BFFE00B54056 /* PromiseStore.swift */; };
 		95B54A501EE1C23D00B54056 /* AssignPromiseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */; };
+		95B54A521EE21CA100B54056 /* PromiseDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */; };
+		95B54A541EE2265F00B54056 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A531EE2265F00B54056 /* RoundButton.swift */; };
+		95B54A571EE22BAD00B54056 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A561EE22BAD00B54056 /* Pulse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		95B54A491EE1BE5C00B54056 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		95B54A4D1EE1BFFE00B54056 /* PromiseStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseStore.swift; sourceTree = "<group>"; };
 		95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignPromiseTableViewController.swift; sourceTree = "<group>"; };
+		95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseDisplayViewController.swift; sourceTree = "<group>"; };
+		95B54A531EE2265F00B54056 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		95B54A561EE22BAD00B54056 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				950A5C771EDF6F29003A893B /* AppDelegate.swift */,
+				95B54A551EE2266500B54056 /* Views */,
 				95B54A461EE1A9E600B54056 /* Cells */,
 				950A5C8F1EDFA3C7003A893B /* Model */,
 				950A5C791EDF6F29003A893B /* MainMenuViewController.swift */,
@@ -104,6 +111,7 @@
 				950A5C961EE0C178003A893B /* ProfilesCollectionViewController.swift */,
 				950A5C981EE0C5CA003A893B /* CoachTabBarViewController.swift */,
 				950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */,
+				95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
 				95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
@@ -132,6 +140,15 @@
 				950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		95B54A551EE2266500B54056 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95B54A531EE2265F00B54056 /* RoundButton.swift */,
+				95B54A561EE22BAD00B54056 /* Pulse.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F34B79695D4D59109A0E34C3 /* Pods */ = {
@@ -268,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B54A541EE2265F00B54056 /* RoundButton.swift in Sources */,
 				950A5C7A1EDF6F29003A893B /* MainMenuViewController.swift in Sources */,
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
 				950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */,
@@ -282,6 +300,8 @@
 				950A5C8C1EDFA3B6003A893B /* User.swift in Sources */,
 				950A5C9B1EE0C8DE003A893B /* UserTabBarViewController.swift in Sources */,
 				95B54A4A1EE1BE5C00B54056 /* Promise.swift in Sources */,
+				95B54A521EE21CA100B54056 /* PromiseDisplayViewController.swift in Sources */,
+				95B54A571EE22BAD00B54056 /* Pulse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

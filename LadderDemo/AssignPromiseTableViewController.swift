@@ -112,11 +112,30 @@ class AssignPromiseTableViewController: UITableViewController {
             let tabVC = self.tabBarController as! CoachTabBarViewController
             
             if let user = tabVC.selectedUser {
-                print("assigning to \(user.firstName)")
+                let ac = UIAlertController(title: "Assign Promise", message: "Do you want to assign this promise to \(user.firstName) \(user.lastName)?", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action:UIAlertAction) in
+                    let sunday = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
+                    let promise = self.promiseStore.allPromises[indexPath.row]
+                    
+                    tabVC.promiseDBRef.child("\(sunday)").child(user.uid).setValue(promise.toAny())
+                    
+                })
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in
+                })
+                ac.addAction(confirm)
+                ac.addAction(cancel)
+                self.present(ac, animated: true, completion: nil)
+            } else {
+                let ac = UIAlertController(title: "No User Selected", message: "Select a User under the User tab first", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (action:UIAlertAction) in
+                    
+                })
+                ac.addAction(confirm)
+                self.present(ac, animated: true, completion: nil)
             }
             
         }
-        assign.backgroundColor = .orange
+        assign.backgroundColor = UIColor.cyan
         
         return [delete, assign]
         
