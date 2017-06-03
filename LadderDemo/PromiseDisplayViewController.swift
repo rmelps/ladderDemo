@@ -75,6 +75,44 @@ class PromiseDisplayViewController: UIViewController {
                 })
             }
         }
+        
+        if let tabVC = tabBarController as? UserTabBarViewController {
+            if let user = tabVC.signedInUser {
+                
+                let uid = user.uid
+                
+                let date = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
+                
+                let dateRef = tabVC.promiseDBRef.child("\(date)")
+                
+                dateRef.observe(.value, with: { (snapShot:FIRDataSnapshot) in
+                    if snapShot.hasChild(uid) {
+                        let uidSnap = snapShot.childSnapshot(forPath: uid)
+                        self.promise = Promise(snapShot: uidSnap)
+                        self.promiseContentLabel.text = self.promise?.content
+                        
+                        let snapValue = uidSnap.value as! [String: String]
+                        
+                        for indicator in self.indicators {
+                            if let id = indicator.accessibilityIdentifier {
+                                
+                                if snapValue[id] == "0" {
+                                    indicator.image = UIImage(named: "incomplete")
+                                }
+                                if snapValue[id] == "1" {
+                                    indicator.image = UIImage(named: "failed")
+                                }
+                                if snapValue[id] == "2" {
+                                    indicator.image = UIImage(named: "complete")
+                                }
+                                
+                            }
+                        }
+                    }
+                })
+                
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +121,51 @@ class PromiseDisplayViewController: UIViewController {
     }
     
     @IBAction func completePromise(_ sender: RoundButton) {
-        print("detected touch")
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let localDate = dateFormatter.string(from: date)
+        let dayOfWeek = localDate.lowercased()
+        
+        for (index, indicator) in indicators.enumerated() {
+            if let id = indicator.accessibilityIdentifier {
+                if id == dayOfWeek {
+                    if let tabVC = tabBarController as? UserTabBarViewController {
+                        let date = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
+                        let ref = tabVC.promiseDBRef.child("\(date)").child(tabVC.signedInUser.uid)
+                        
+                        let complete = "2"
+                        
+                        switch index {
+                        case 0:
+                            promise?.sunday = complete
+                        case 1:
+                            promise?.monday = complete
+                        case 2:
+                            promise?.tuesday = complete
+                        case 3:
+                            promise?.wednesday = complete
+                        case 4:
+                            promise?.thursday = complete
+                        case 5:
+                            promise?.friday = complete
+                        case 6:
+                            promise?.saturday = complete
+                        default:
+                            break
+                        }
+                        
+                        ref.setValue(self.promise?.toAny(), withCompletionBlock: { (error:Error?, ref:FIRDatabaseReference) in
+                            if error == nil {
+                                indicator.image = UIImage(named: "complete")
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        
     }
     
     func onTapDown(_ sender: UIButton) {
