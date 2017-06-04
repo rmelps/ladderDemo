@@ -29,6 +29,8 @@
 		95B54A521EE21CA100B54056 /* PromiseDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */; };
 		95B54A541EE2265F00B54056 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A531EE2265F00B54056 /* RoundButton.swift */; };
 		95B54A571EE22BAD00B54056 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A561EE22BAD00B54056 /* Pulse.swift */; };
+		95B54A591EE4A48000B54056 /* HistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A581EE4A48000B54056 /* HistoryCollectionViewController.swift */; };
+		95B54A5B1EE4A50900B54056 /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B54A5A1EE4A50900B54056 /* HistoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseDisplayViewController.swift; sourceTree = "<group>"; };
 		95B54A531EE2265F00B54056 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		95B54A561EE22BAD00B54056 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
+		95B54A581EE4A48000B54056 /* HistoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewController.swift; sourceTree = "<group>"; };
+		95B54A5A1EE4A50900B54056 /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				950A5C9A1EE0C8DE003A893B /* UserTabBarViewController.swift */,
 				95B54A511EE21CA100B54056 /* PromiseDisplayViewController.swift */,
 				950A5C7B1EDF6F29003A893B /* Main.storyboard */,
+				95B54A581EE4A48000B54056 /* HistoryCollectionViewController.swift */,
 				95B54A4F1EE1C23D00B54056 /* AssignPromiseTableViewController.swift */,
 				950A5C7E1EDF6F29003A893B /* Assets.xcassets */,
 				950A5C801EDF6F29003A893B /* LaunchScreen.storyboard */,
@@ -138,6 +143,7 @@
 			children = (
 				95B54A471EE1BD9A00B54056 /* PromiseCell.swift */,
 				950A5C9C1EE0D4AA003A893B /* ProfileCollectionViewCell.swift */,
+				95B54A5A1EE4A50900B54056 /* HistoryCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -288,8 +294,10 @@
 				95B54A541EE2265F00B54056 /* RoundButton.swift in Sources */,
 				950A5C7A1EDF6F29003A893B /* MainMenuViewController.swift in Sources */,
 				950A5C781EDF6F29003A893B /* AppDelegate.swift in Sources */,
+				95B54A5B1EE4A50900B54056 /* HistoryCollectionViewCell.swift in Sources */,
 				950A5C911EDFB98F003A893B /* CoachInViewController.swift in Sources */,
 				950A5C991EE0C5CA003A893B /* CoachTabBarViewController.swift in Sources */,
+				95B54A591EE4A48000B54056 /* HistoryCollectionViewController.swift in Sources */,
 				95B54A4E1EE1BFFE00B54056 /* PromiseStore.swift in Sources */,
 				950A5C9D1EE0D4AA003A893B /* ProfileCollectionViewCell.swift in Sources */,
 				950A5C971EE0C178003A893B /* ProfilesCollectionViewController.swift in Sources */,

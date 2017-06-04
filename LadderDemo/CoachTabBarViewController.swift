@@ -17,6 +17,8 @@ class CoachTabBarViewController: UITabBarController, UITabBarControllerDelegate 
     var coachDBRef: FIRDatabaseReference!
     var promiseDBRef: FIRDatabaseReference!
     var selectedUser: User?
+    var weeks = [String]()
+    var databaseWeeks = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,39 @@ class CoachTabBarViewController: UITabBarController, UITabBarControllerDelegate 
         
         promiseDBRef = FIRDatabase.database().reference().child("promises")
 
-        // Do any additional setup after loading the view.
+        promiseDBRef.observe(.value) { (snapShot:FIRDataSnapshot) in
+            self.weeks = []
+            self.databaseWeeks = []
+            print("observed promise")
+            var keys = [String]()
+            for child in snapShot.children.allObjects {
+                let snap = child as! FIRDataSnapshot
+                let key = snap.key
+                keys.append(key)
+            }
+            print(keys)
+            self.databaseWeeks = keys.reversed()
+            
+            var dates = [Date]()
+            
+            for date in keys {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                let weekDate = dateFormatter.date(from: date)
+                dates.append(weekDate!)
+            }
+            
+            dates.sort(by: { $0.compare($1) == .orderedDescending})
+                
+            for date in dates {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd, yyyy"
+                let strDate = dateFormatter.string(from: date)
+                
+                self.weeks.append(strDate)
+            }
+            print(self.weeks)
+        }
     }
 
     override func didReceiveMemoryWarning() {

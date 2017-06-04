@@ -61,6 +61,8 @@ class AssignPromiseTableViewController: UITableViewController {
         
         alert.addTextField { (textField: UITextField) in
             textField.placeholder = "Enter New Promise"
+            textField.autocapitalizationType = .sentences
+            textField.autocorrectionType = .yes
         }
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
@@ -115,7 +117,7 @@ class AssignPromiseTableViewController: UITableViewController {
             
             if let user = tabVC.selectedUser {
                 let nextSunday = tabVC.get(direction: .Next, "Sunday", considerToday: false)
-                let lastSunday = tabVC.get(direction: .Previous, "Sunday", considerToday: false)
+                let lastSunday = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
                 
                 var message = String()
                 var confirmNext = UIAlertAction()

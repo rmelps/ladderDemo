@@ -77,6 +77,9 @@ class PromiseDisplayViewController: UIViewController {
                         self.promiseContentLabel.text = "You Haven't Assigned a Promise Yet!"
                     }
                 })
+            } else {
+                self.completeButton.isEnabled = false
+                self.promiseContentLabel.text = "Choose a User first!"
             }
         }
         
@@ -183,8 +186,14 @@ class PromiseDisplayViewController: UIViewController {
         let position = sender.center
         let pulse = Pulsing(numberOfPulses: 1, radius: radius * 4.5, position: position)
         pulse.animationDuration = 0.8
-        pulse.backgroundColor = UIColor.green.cgColor
         
+        if tabBarController is CoachTabBarViewController {
+            pulse.backgroundColor = UIColor.red.cgColor
+        }
+        if tabBarController is UserTabBarViewController {
+            pulse.backgroundColor = UIColor.green.cgColor
+        }
+    
         self.view.layer.insertSublayer(pulse, below: sender.layer)
     }
     

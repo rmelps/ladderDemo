@@ -10,8 +10,6 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-private let reuseIdentifier = "Cell"
-
 class ProfilesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
    
     let reuseIdentifier = "ProfileCell"

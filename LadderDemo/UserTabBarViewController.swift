@@ -18,6 +18,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     var coachDBRef: FIRDatabaseReference!
     var promiseDBRef: FIRDatabaseReference!
     var profiles: [String]?
+    var weeks = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,38 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             self.profiles = keys
             print(self.profiles ?? "no profiles found")
         })
+        
+        promiseDBRef.observe(.value) { (snapShot:FIRDataSnapshot) in
+            print("observed promise")
+            var keys = [String]()
+            for child in snapShot.children.allObjects {
+                let snap = child as! FIRDataSnapshot
+                let key = snap.key
+                keys.append(key)
+            }
+            print(keys)
+            
+            var dates = [Date]()
+            
+            for date in keys {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                let weekDate = dateFormatter.date(from: date)
+                dates.append(weekDate!)
+            }
+            
+            dates.sort(by: { $0.compare($1) == .orderedDescending})
+            
+            for date in dates {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd, yyyy"
+                let strDate = dateFormatter.string(from: date)
+                print(strDate)
+                self.weeks.append(strDate)
+            }
+            print(self.weeks)
+            
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -86,9 +119,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy"
             let localDate = dateFormatter.string(from: date)
-            print(localDate)
             let formattedDate = dateFormatter.date(from: localDate)
-            print(formattedDate! as NSDate)
             
             return formattedDate! as NSDate
         }
