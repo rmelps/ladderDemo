@@ -65,7 +65,18 @@ class CoachTabBarViewController: UITabBarController, UITabBarControllerDelegate 
         let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         
         if consider && calendar.component(.weekday, from: today as Date) == nextWeekDayIndex {
-            return today
+            let nextDateComponent = NSDateComponents()
+            nextDateComponent.weekday = nextWeekDayIndex
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let localDate = dateFormatter.string(from: date)
+            print(localDate)
+            let formattedDate = dateFormatter.date(from: localDate)
+            print(formattedDate! as NSDate)
+            
+            return formattedDate! as NSDate
         }
         
         let nextDateComponent = NSDateComponents()

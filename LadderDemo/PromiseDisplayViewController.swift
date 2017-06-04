@@ -87,6 +87,7 @@ class PromiseDisplayViewController: UIViewController {
                 
                 let date = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
                 
+                
                 let dateRef = tabVC.promiseDBRef.child("\(date)")
                 
                 dateRef.observe(.value, with: { (snapShot:FIRDataSnapshot) in
