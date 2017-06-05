@@ -173,6 +173,7 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
         
         if let tabVC = specificTabBarController as? CoachTabBarViewController {
             tabVC.selectedUser = cell.uid
+            tabVC.selectedImage = cell.profileImageView.image!
         }
         if let tabVC = specificTabBarController as? UserTabBarViewController {
             tabVC.selectedCoach = cell.uid as? Coach

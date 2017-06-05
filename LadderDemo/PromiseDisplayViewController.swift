@@ -43,6 +43,9 @@ class PromiseDisplayViewController: UIViewController {
         if let tabVC = tabBarController as? CoachTabBarViewController {
             if let user = tabVC.selectedUser {
                 let uid = user.uid
+                completeButton.setBackgroundImage(tabVC.selectedImage, for: .normal)
+                completeButton.isEnabled = false
+                completeButton.setTitle("", for: .normal)
                 
                 let date = tabVC.get(direction: .Previous, "Sunday", considerToday: true)
                 

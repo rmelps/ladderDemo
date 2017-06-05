@@ -19,6 +19,7 @@ class CoachTabBarViewController: UITabBarController, UITabBarControllerDelegate 
     var selectedUser: User?
     var weeks = [String]()
     var databaseWeeks = [String]()
+    var selectedImage = UIImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -523,27 +523,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coach View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT5-8N-VOP">
-                                <rect key="frame" x="142" y="323" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coachHome" translatesAutoresizingMaskIntoConstraints="NO" id="kz7-JL-Aro">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KMW-eK-hIP">
+                                <rect key="frame" x="126.5" y="40" width="122" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT5-8N-VOP">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="36"/>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="30"/>
+                                        <color key="textColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coach" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JV-b3-aNV">
+                                        <rect key="frame" x="0.0" y="44" width="122" height="36"/>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="30"/>
+                                        <color key="textColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-SQ-MIQ">
+                                <rect key="frame" x="130" y="260" width="115" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ur-Tn-Iow">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="32"/>
+                                        <state key="normal" title="Change Photo" backgroundImage="MenuButton"/>
+                                        <connections>
+                                            <action selector="changePhotoButtonPressed:" destination="wxI-Wd-xBM" eventType="touchUpInside" id="0RV-6S-WFD"/>
+                                            <action selector="changePhotoButtonPressed:" destination="hoF-2F-blU" eventType="touchUpInside" id="TjH-Aa-tyb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUG-fw-4gd">
+                                        <rect key="frame" x="21" y="40" width="73" height="32"/>
+                                        <state key="normal" title="Log Out" backgroundImage="MenuButton">
+                                            <color key="titleColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logOutButtonPressed:" destination="hoF-2F-blU" eventType="touchUpInside" id="CUI-zT-NeQ"/>
+                                            <action selector="logOutButtonPressed:" destination="wxI-Wd-xBM" eventType="touchUpInside" id="qZA-le-jps"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nT5-8N-VOP" firstAttribute="centerY" secondItem="bQd-Vt-pHT" secondAttribute="centerY" id="TcH-iI-wEg"/>
-                            <constraint firstItem="nT5-8N-VOP" firstAttribute="centerX" secondItem="bQd-Vt-pHT" secondAttribute="centerX" id="x0A-qV-ZCO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kz7-JL-Aro" secondAttribute="trailing" constant="-16" id="0JI-KQ-ZfC"/>
+                            <constraint firstItem="kz7-JL-Aro" firstAttribute="leading" secondItem="bQd-Vt-pHT" secondAttribute="leadingMargin" constant="-16" id="1Ds-E6-jgI"/>
+                            <constraint firstItem="Kyn-SQ-MIQ" firstAttribute="centerX" secondItem="bQd-Vt-pHT" secondAttribute="centerX" id="JWV-nV-5re"/>
+                            <constraint firstItem="7St-pB-uHF" firstAttribute="top" secondItem="kz7-JL-Aro" secondAttribute="bottom" constant="-49" id="KEc-nN-kMR"/>
+                            <constraint firstItem="Kyn-SQ-MIQ" firstAttribute="top" secondItem="KMW-eK-hIP" secondAttribute="bottom" constant="140" id="RYS-Oo-lfG"/>
+                            <constraint firstItem="KMW-eK-hIP" firstAttribute="centerX" secondItem="bQd-Vt-pHT" secondAttribute="centerX" id="d89-bx-tMd"/>
+                            <constraint firstItem="KMW-eK-hIP" firstAttribute="top" secondItem="j3J-ji-e4a" secondAttribute="bottom" constant="20" id="eVW-2I-pTl"/>
+                            <constraint firstItem="kz7-JL-Aro" firstAttribute="top" secondItem="j3J-ji-e4a" secondAttribute="bottom" constant="-20" id="hEn-jU-4fD"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="homeEmpty" selectedImage="homeFull" id="FSZ-0c-qbS" userLabel="Home"/>
                     <connections>
+                        <outlet property="changePhotoButton" destination="3ur-Tn-Iow" id="hLS-Up-hzW"/>
+                        <outlet property="homeScreenImageView" destination="kz7-JL-Aro" id="xTS-0d-7ve"/>
+                        <outlet property="logOutButton" destination="EUG-fw-4gd" id="Qva-EZ-WfI"/>
+                        <outlet property="userNameLabel" destination="0JV-b3-aNV" id="h3m-gE-PGl"/>
                         <outlet property="welcomeLabel" destination="nT5-8N-VOP" id="B2i-XK-o9E"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="Erg-i4-Das"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LM1-5g-uat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="139"/>
+            <point key="canvasLocation" x="2860" y="138.98050974512745"/>
         </scene>
         <!--Users-->
         <scene sceneID="PPH-wO-zl3">
@@ -757,22 +806,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Signed In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-WR-NWr">
-                                <rect key="frame" x="131.5" y="323" width="112" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHome" translatesAutoresizingMaskIntoConstraints="NO" id="r5i-ed-rWO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-EC-Sro">
+                                <rect key="frame" x="117.5" y="40" width="140.5" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-WR-NWr">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="36"/>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="30"/>
+                                        <color key="textColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYk-eh-oAe">
+                                        <rect key="frame" x="0.0" y="44" width="140.5" height="36"/>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="30"/>
+                                        <color key="textColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1d9-f2-FSM">
+                                <rect key="frame" x="129.5" y="260" width="115" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hld-4A-E0t">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="32"/>
+                                        <state key="normal" title="Change Photo" backgroundImage="MenuButton"/>
+                                        <connections>
+                                            <action selector="changePhotoButtonPressed:" destination="hoF-2F-blU" eventType="touchUpInside" id="u0l-r5-b5Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eln-Bt-ySU">
+                                        <rect key="frame" x="21" y="40" width="73" height="32"/>
+                                        <state key="normal" title="Log Out" backgroundImage="MenuButton">
+                                            <color key="titleColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.99549549550000005" green="0.99099099099999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logOutButtonPressed:" destination="hoF-2F-blU" eventType="touchUpInside" id="Fgr-y1-tdl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4ea-WR-NWr" firstAttribute="centerY" secondItem="phD-gr-pVL" secondAttribute="centerY" id="5mj-In-edZ"/>
-                            <constraint firstItem="4ea-WR-NWr" firstAttribute="centerX" secondItem="phD-gr-pVL" secondAttribute="centerX" id="62j-Aw-1NE"/>
+                            <constraint firstItem="r5i-ed-rWO" firstAttribute="top" secondItem="rMr-SO-u91" secondAttribute="bottom" constant="-20" id="0oU-oC-9mf"/>
+                            <constraint firstItem="1d9-f2-FSM" firstAttribute="centerX" secondItem="phD-gr-pVL" secondAttribute="centerX" id="7hP-qD-H1j"/>
+                            <constraint firstItem="3h6-5z-UcS" firstAttribute="top" secondItem="r5i-ed-rWO" secondAttribute="bottom" constant="-49" id="Ihx-6l-WLh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r5i-ed-rWO" secondAttribute="trailing" constant="-16" id="NZf-t6-8vg"/>
+                            <constraint firstItem="UwW-EC-Sro" firstAttribute="centerX" secondItem="phD-gr-pVL" secondAttribute="centerX" id="b4E-Ca-mxY"/>
+                            <constraint firstItem="UwW-EC-Sro" firstAttribute="top" secondItem="rMr-SO-u91" secondAttribute="bottom" constant="20" id="f3l-Z7-95x"/>
+                            <constraint firstItem="1d9-f2-FSM" firstAttribute="top" secondItem="UwW-EC-Sro" secondAttribute="bottom" constant="140" id="omJ-5F-Jeh"/>
+                            <constraint firstItem="r5i-ed-rWO" firstAttribute="leading" secondItem="phD-gr-pVL" secondAttribute="leadingMargin" constant="-16" id="pdl-LS-8B2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="homeEmpty" selectedImage="homeFull" id="yp0-Qs-wp6" userLabel="Home"/>
                     <connections>
+                        <outlet property="changePhotoButton" destination="hld-4A-E0t" id="4Q2-Yy-e4G"/>
+                        <outlet property="homeScreenImageView" destination="r5i-ed-rWO" id="c5E-Zs-IQz"/>
+                        <outlet property="logOutButton" destination="eln-Bt-ySU" id="8Ig-Ns-NjM"/>
+                        <outlet property="userNameLabel" destination="IYk-eh-oAe" id="Nfh-eh-1gu"/>
                         <outlet property="welcomeLabel" destination="4ea-WR-NWr" id="KGu-SA-W9T"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="userLogOutSegue" id="SSs-IG-xlB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88I-6v-pKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -889,6 +985,7 @@
         <image name="assignFull" width="25" height="25"/>
         <image name="benchEmpty" width="25" height="25"/>
         <image name="benchFull" width="25" height="25"/>
+        <image name="coachHome" width="512" height="341"/>
         <image name="historyEmpty" width="25" height="25"/>
         <image name="historyFull" width="25" height="25"/>
         <image name="homeEmpty" width="25" height="25"/>
@@ -896,8 +993,10 @@
         <image name="incomplete" width="32" height="32"/>
         <image name="userEmpty" width="25" height="25"/>
         <image name="userFull" width="25" height="25"/>
+        <image name="userHome" width="1508" height="1150"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SSs-IG-xlB"/>
         <segue reference="pQe-L3-VsA"/>
         <segue reference="bcI-qE-C8q"/>
     </inferredMetricsTieBreakers>
