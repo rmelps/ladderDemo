@@ -1,0 +1,6 @@
+framework module Pods_LadderDemo {
+  umbrella header "Pods-LadderDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
