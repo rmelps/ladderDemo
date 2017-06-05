@@ -494,7 +494,7 @@
                             <constraint firstItem="Drn-8u-H1A" firstAttribute="leading" secondItem="v7M-6A-uZ9" secondAttribute="leadingMargin" id="yDc-6M-x1f"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Promise" id="R2y-mA-jWi"/>
+                    <tabBarItem key="tabBarItem" title="Promise" image="benchEmpty" selectedImage="benchFull" id="R2y-mA-jWi"/>
                     <connections>
                         <outlet property="completeButton" destination="h1n-xW-78r" id="d3V-xN-rjN"/>
                         <outlet property="fridayIndicator" destination="dXT-Tn-ye2" id="TyP-gF-09e"/>
@@ -536,7 +536,7 @@
                             <constraint firstItem="nT5-8N-VOP" firstAttribute="centerX" secondItem="bQd-Vt-pHT" secondAttribute="centerX" id="x0A-qV-ZCO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="FSZ-0c-qbS" userLabel="Home"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homeEmpty" selectedImage="homeFull" id="FSZ-0c-qbS" userLabel="Home"/>
                     <connections>
                         <outlet property="welcomeLabel" destination="nT5-8N-VOP" id="B2i-XK-o9E"/>
                     </connections>
@@ -683,7 +683,7 @@
                                 <rect key="frame" x="37.5" y="0.0" width="300" height="277"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="277"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="301" height="277"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week of..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEv-yp-k5Q">
@@ -770,7 +770,7 @@
                             <constraint firstItem="4ea-WR-NWr" firstAttribute="centerX" secondItem="phD-gr-pVL" secondAttribute="centerX" id="62j-Aw-1NE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="yp0-Qs-wp6" userLabel="Home"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homeEmpty" selectedImage="homeFull" id="yp0-Qs-wp6" userLabel="Home"/>
                     <connections>
                         <outlet property="welcomeLabel" destination="4ea-WR-NWr" id="KGu-SA-W9T"/>
                     </connections>
@@ -805,7 +805,7 @@
         <scene sceneID="4sh-XH-eF4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UMf-RW-cW4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="zaZ-Jd-JwF" userLabel="Users"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="userEmpty" selectedImage="userFull" id="zaZ-Jd-JwF" userLabel="Users"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pMQ-xQ-bmO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -844,7 +844,9 @@
         <scene sceneID="Fqm-Xh-JBD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RjT-8A-aya" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Assign" id="Dhq-27-Yiq"/>
+                    <tabBarItem key="tabBarItem" title="Assign" image="assignEmpty" selectedImage="assignFull" id="Dhq-27-Yiq">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pcy-rf-EyO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -863,7 +865,7 @@
         <scene sceneID="y6V-bE-CjL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7aL-dv-fCB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="UPf-2l-vf3"/>
+                    <tabBarItem key="tabBarItem" title="History" image="historyEmpty" selectedImage="historyFull" id="UPf-2l-vf3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ndn-lS-W3x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -883,7 +885,17 @@
         <image name="MenuButton" width="73" height="32"/>
         <image name="MickeyHome" width="800" height="438"/>
         <image name="RockyHome" width="447" height="251"/>
+        <image name="assignEmpty" width="25" height="25"/>
+        <image name="assignFull" width="25" height="25"/>
+        <image name="benchEmpty" width="25" height="25"/>
+        <image name="benchFull" width="25" height="25"/>
+        <image name="historyEmpty" width="25" height="25"/>
+        <image name="historyFull" width="25" height="25"/>
+        <image name="homeEmpty" width="25" height="25"/>
+        <image name="homeFull" width="25" height="25"/>
         <image name="incomplete" width="32" height="32"/>
+        <image name="userEmpty" width="25" height="25"/>
+        <image name="userFull" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pQe-L3-VsA"/>

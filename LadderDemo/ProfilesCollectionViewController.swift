@@ -20,16 +20,15 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: "Profile Cell")
+        
         collectionView?.allowsMultipleSelection = false
         
         if let tabVC = tabBarController as? CoachTabBarViewController {
             specificTabBarController = tabVC
-            self.navigationController?.title = "My Users"
         } else {
             specificTabBarController = tabBarController as? UserTabBarViewController
-            self.navigationController?.title = "Coaches"
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
