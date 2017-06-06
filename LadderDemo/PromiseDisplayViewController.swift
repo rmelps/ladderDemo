@@ -27,6 +27,10 @@ class PromiseDisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        promiseContentLabel.layer.cornerRadius = 3.0
+        promiseContentLabel.layer.borderWidth = 4.0
+        promiseContentLabel.layer.borderColor = UIColor.white.cgColor
+        
         indicators.append(sundayIndicator)
         indicators.append(mondayIndicator)
         indicators.append(tuesdayIndicator)
@@ -43,6 +47,7 @@ class PromiseDisplayViewController: UIViewController {
         if let tabVC = tabBarController as? CoachTabBarViewController {
             if let user = tabVC.selectedUser {
                 let uid = user.uid
+                completeButton.isHidden = false
                 completeButton.setBackgroundImage(tabVC.selectedImage, for: .normal)
                 completeButton.layer.cornerRadius = 4.0
                 completeButton.clipsToBounds = true
@@ -78,11 +83,12 @@ class PromiseDisplayViewController: UIViewController {
                             }
                         }
                     } else {
-                        self.completeButton.isEnabled = false
+                        self.completeButton.isEnabled = true
                         self.promiseContentLabel.text = "You Haven't Assigned a Promise Yet!"
                     }
                 })
             } else {
+                self.completeButton.isHidden = true
                 self.completeButton.isEnabled = false
                 self.promiseContentLabel.text = "Choose a User first!"
             }

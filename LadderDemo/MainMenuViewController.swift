@@ -117,7 +117,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate {
     override func viewWillLayoutSubviews() {
         for image in imageViews {
             image.layer.borderWidth = 5.0
-            image.layer.borderColor = UIColor.blue.cgColor
+            image.layer.borderColor = UIColor(displayP3Red: 79/255, green: 199/255, blue: 113/255, alpha: 1.0).cgColor
             image.layer.cornerRadius = 7.0
             image.layer.masksToBounds = true
         }

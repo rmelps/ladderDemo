@@ -19,6 +19,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     var promiseDBRef: FIRDatabaseReference!
     var profiles: [String]?
     var weeks = [String]()
+    var databaseWeeks = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,8 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         })
         
         promiseDBRef.observe(.value) { (snapShot:FIRDataSnapshot) in
+            self.weeks = []
+            self.databaseWeeks = []
             print("observed promise")
             var keys = [String]()
             for child in snapShot.children.allObjects {
@@ -49,6 +52,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 keys.append(key)
             }
             print(keys)
+            self.databaseWeeks = keys.reversed()
             
             var dates = [Date]()
             

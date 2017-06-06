@@ -16,6 +16,7 @@ class User {
     var firstName: String
     var lastName: String
     var photoPath: String
+    var coach: String
     let itemRef: FIRDatabaseReference?
     
     init(userData: FIRUser, snapShot: FIRDataSnapshot) {
@@ -44,6 +45,11 @@ class User {
             self.photoPath = photoPath
         } else {
             photoPath = "nil"
+        }
+        if let coach = snapShotValue?["coach"] as? String {
+            self.coach = coach
+        } else {
+            coach = "nil"
         }
     }
     
@@ -74,6 +80,11 @@ class User {
         } else {
             photoPath = "nil"
         }
+        if let coach = snapShotValue?["coach"] as? String {
+            self.coach = coach
+        } else {
+            coach = "nil"
+        }
     }
     
     init(uid:String, email:String, firstName: String, lastName: String) {
@@ -83,9 +94,10 @@ class User {
         self.lastName = lastName
         self.itemRef = nil
         self.photoPath = "nil"
+        self.coach = "nil"
     }
     
     func toAny() -> Any {
-        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": photoPath]
+        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": photoPath, "coach": coach]
     }
 }

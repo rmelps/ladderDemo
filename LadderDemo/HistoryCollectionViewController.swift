@@ -19,6 +19,10 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if tabBarController is UserTabBarViewController {
+            navigationItem.title = "My History"
+        }
 
     }
     
@@ -101,26 +105,27 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
                     let keys = snapVal.keys
                     
                     DispatchQueue.main.async {
+                        var completion: Float = 0
+                        
                         for key in keys {
                             let val = snapVal[key]
-                            if val == "1" {
-                                cell.statusImageView.image = UIImage(named: "failed")
-                                cell.statusLabel.text = "Failed!"
-                                cell.statusLabel.textColor = .red
-                                break
-                            }
-                            if val == "0" {
-                                cell.statusImageView.image = UIImage(named: "incomplete")
-                                cell.statusLabel.text = "Incomplete!"
-                                cell.statusLabel.textColor = .darkGray
-                                break
-                            }
                             if val == "2" {
-                                cell.statusImageView.image = UIImage(named: "complete")
-                                cell.statusLabel.text = "Complete!"
-                                cell.statusLabel.textColor = .green
+                                completion += 1
                             }
                         }
+                        
+                        if completion < 7 {
+                            cell.statusImageView.image = UIImage(named: "incomplete")
+                            cell.statusLabel.text = "Incomplete!"
+                            cell.statusLabel.textColor = .darkGray
+                        } else {
+                            cell.statusImageView.image = UIImage(named: "complete")
+                            cell.statusLabel.text = "Complete!"
+                            cell.statusLabel.textColor = .green
+                        }
+                        
+                        cell.progressView.progress = completion / 7.0
+                        
                         cell.statusImageView.isHidden = false
                         cell.statusLabel.isHidden = false
                         cell.promiseLabe.text = snapVal["content"]
@@ -138,7 +143,54 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
         }
         
         if let tabVC = tabBarController as? UserTabBarViewController {
-            cell.titleLabel.text = "Week of \(tabVC.weeks[indexPath.row])"
+            cell.contentView.isHidden = false
+            let week = tabVC.weeks[indexPath.row]
+            cell.titleLabel.text = "Week of \(week)"
+            
+            tabVC.promiseDBRef.child(tabVC.databaseWeeks[indexPath.row]).child(tabVC.signedInUser.uid).observeSingleEvent(of: .value, with: { (snapShot:FIRDataSnapshot) in
+                if snapShot.value is NSNull {
+                    cell.promiseLabe.text = "User Was Not Assigned a Promise This Week"
+                    cell.statusImageView.isHidden = true
+                    cell.statusLabel.isHidden = true
+                    return
+                }
+                
+                let snapVal = snapShot.value as! [String: String]
+                let keys = snapVal.keys
+                
+                DispatchQueue.main.async {
+                    var completion: Float = 0
+                    
+                    for key in keys {
+                        let val = snapVal[key]
+                        if val == "2" {
+                            completion += 1
+                        }
+                    }
+                    
+                    if completion < 7 {
+                        cell.statusImageView.image = UIImage(named: "incomplete")
+                        cell.statusLabel.text = "Incomplete!"
+                        cell.statusLabel.textColor = .darkGray
+                    } else {
+                        cell.statusImageView.image = UIImage(named: "complete")
+                        cell.statusLabel.text = "Complete!"
+                        cell.statusLabel.textColor = .green
+                    }
+                    
+                    cell.progressView.progress = completion / 7.0
+                    
+                    cell.statusImageView.isHidden = false
+                    cell.statusLabel.isHidden = false
+                    cell.promiseLabe.text = snapVal["content"]
+                    
+                    if self.latch {
+                        collectionView.reloadData()
+                        self.latch = false
+                    }
+                }
+                
+            })
         }
     
         return cell

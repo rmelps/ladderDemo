@@ -22,6 +22,8 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     var storage: FIRStorage!
     var storageRef: FIRStorageReference!
     var imagesRef: FIRStorageReference!
+    
+    var selectedCellIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +34,10 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
         
         if let tabVC = tabBarController as? CoachTabBarViewController {
             specificTabBarController = tabVC
+            navigationItem.title = "My Trainees"
         } else {
             specificTabBarController = tabBarController as? UserTabBarViewController
+            navigationItem.title = "Available Coaches"
         }
         
         storage = FIRStorage.storage()
@@ -44,6 +48,15 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        if selectedCellIndexPath != nil {
+           // collectionView?.selectItem(at: self.selectedCellIndexPath, animated: false, scrollPosition: UICollectionViewScrollPosition.centeredVertically)
+        }
     }
 
     /*
@@ -96,10 +109,8 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                     cell.uid = user
                     print("found children...")
                     
-                    print(cell.uid?.photoPath)
                 
                     if cell.uid?.photoPath != "nil" {
-                        print("found photo")
                         // Create a reference to the file that will be downloaded
                         let reference = self.storage.reference(forURL: cell.uid!.photoPath)
                         // Download image at path to local memory with defined maximum size
@@ -130,8 +141,31 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                     cell.nameLabel.text = coach.firstName
                     cell.uid = coach
                     
+                    if coachForCell == userTabBarController.signedInUser.coach {
+                        self.selectedCellIndexPath = indexPath
+                        cell.selectedCell = true
+                    } else {
+                        cell.selectedCell = false
+                    }
+                    
                     if coach.photoPath != "nil" {
                         print("found photo")
+                        // Create a reference to the file that will be downloaded
+                        let reference = self.storage.reference(forURL: cell.uid!.photoPath)
+                        // Download image at path to local memory with defined maximum size
+                        reference.data(withMaxSize: 10 * 1024 * 1024) { (data:Data?, error:Error?) in
+                            
+                            cell.activityIndicator.stopAnimating()
+                            cell.activityIndicator.isHidden = true
+                            
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                            if let data = data {
+                                cell.profileImageView.image = UIImage(data: data)!
+                            }
+                        }
+
                     } else {
                         cell.profileImageView.image = UIImage(named: "default-avatar")
                         cell.activityIndicator.stopAnimating()
@@ -168,10 +202,6 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return false
     }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -194,9 +224,15 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if selectedCellIndexPath != nil {
+            let thatCell = collectionView.cellForItem(at: selectedCellIndexPath!) as! ProfileCollectionViewCell
+            configCell(cell: thatCell, selected: false)
+        }
+        
         let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
-        cell.layer.borderWidth = 3.0
-        cell.layer.borderColor = UIColor.green.cgColor
+        
+        self.configCell(cell: cell, selected: true)
+        self.selectedCellIndexPath = indexPath
         
         if let tabVC = specificTabBarController as? CoachTabBarViewController {
             tabVC.selectedUser = cell.uid
@@ -208,6 +244,8 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
             if let children = tabVC.selectedCoach?.children, children.contains(tabVC.signedInUser.uid) {
             } else {
                 if let coach = tabVC.selectedCoach {
+                    tabVC.signedInUser.coach = coach.uid
+                    tabVC.userDBRef.child(tabVC.signedInUser.uid).setValue(tabVC.signedInUser.toAny())
                     coach.children?.append(tabVC.signedInUser.uid)
                     tabVC.coachDBRef.child(coach.uid).child("children").setValue(coach.children as Any)
                 }
@@ -219,8 +257,8 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! ProfileCollectionViewCell
-        cell.layer.borderWidth = 0.0
-        cell.layer.borderColor = UIColor.clear.cgColor
+        
+        self.configCell(cell: cell, selected: false)
         
         if let tabVC = specificTabBarController as? UserTabBarViewController {
             if let coach = tabVC.selectedCoach {
@@ -230,6 +268,14 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                     tabVC.coachDBRef.child(coach.uid).child("children").setValue(coach.children as Any)
                 }
             }
+        }
+    }
+    func configCell(cell: ProfileCollectionViewCell, selected: Bool) {
+        
+        if selected {
+            cell.selectedCell = true
+        } else {
+            cell.selectedCell = false
         }
     }
 }

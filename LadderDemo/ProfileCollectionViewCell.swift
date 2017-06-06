@@ -13,5 +13,17 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nameLabel: UILabel!
     var uid: User?
+    var selectedCell: Bool = false {
+        didSet{
+            if selectedCell {
+                self.layer.borderColor = UIColor.green.cgColor
+                self.layer.borderWidth = 3.0
+            } else {
+                self.layer.borderColor = UIColor.clear.cgColor
+                self.layer.borderWidth = 0.0
+            }
+            
+        }
+    }
     
 }

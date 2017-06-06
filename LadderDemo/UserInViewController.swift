@@ -71,6 +71,8 @@ class UserInViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         } else {
             self.profilePicView.image = UIImage(named: "default-avatar")
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
         }
         
     }
@@ -125,7 +127,13 @@ class UserInViewController: UIViewController, UIImagePickerControllerDelegate, U
         xMotion.minimumRelativeValue = -magnitude
         xMotion.maximumRelativeValue = magnitude
         
-        view.addMotionEffect(xMotion)
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongHorizontalAxis)
+        yMotion.minimumRelativeValue = -magnitude
+        yMotion.maximumRelativeValue = magnitude
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [xMotion, yMotion]
+        view.addMotionEffect(group)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
