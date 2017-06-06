@@ -39,6 +39,7 @@ class CoachInViewController: UIViewController, UIImagePickerControllerDelegate, 
         applyMotionEffect(toView: welcomeLabel, magnitude: -15)
         applyMotionEffect(toView: changePhotoButton, magnitude: -15)
         applyMotionEffect(toView: logOutButton, magnitude: -15)
+        applyMotionEffect(toView: profilePicView, magnitude: -15)
         
         storage = FIRStorage.storage()
         storageRef = storage.reference()

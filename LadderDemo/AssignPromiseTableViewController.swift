@@ -20,6 +20,16 @@ class AssignPromiseTableViewController: UITableViewController {
         createPresets()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backgroundImage = UIImage(named: "coachHome")
+        let imageView = UIImageView(image: backgroundImage)
+        imageView.contentMode = .scaleAspectFill
+        self.tableView.backgroundView = imageView
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,6 +84,8 @@ class AssignPromiseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PromiseCell
+        
+        cell.backgroundColor = UIColor(white: 0.45, alpha: 0.4)
         
         let promise = promiseStore.allPromises[indexPath.row]
         
@@ -172,7 +184,7 @@ class AssignPromiseTableViewController: UITableViewController {
             }
             
         }
-        assign.backgroundColor = UIColor.cyan
+        assign.backgroundColor = UIColor(displayP3Red: 79/255, green: 199/255, blue: 113/255, alpha: 1.0)
         
         return [delete, assign]
         

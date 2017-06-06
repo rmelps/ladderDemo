@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.37570501179999999" green="0.66657312369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.16470588235294117" green="0.72941176470588232" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vyp-iE-9Th" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7on-0i-frG"/>
                             <constraint firstItem="1YV-qI-2Sp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="5" id="EXM-a7-97D"/>
@@ -715,15 +715,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-4Q-5Ac">
-                                            <rect key="frame" x="166.5" y="12" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-4Q-5Ac">
+                                            <rect key="frame" x="13" y="10.5" width="349" height="23"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Condensed" family="American Typewriter" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="TCc-4Q-5Ac" firstAttribute="centerY" secondItem="Jrb-lv-G1o" secondAttribute="centerY" id="AGF-9m-Lyh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TCc-4Q-5Ac" secondAttribute="trailing" constant="5" id="NpX-D1-L3D"/>
+                                        <constraint firstItem="TCc-4Q-5Ac" firstAttribute="leading" secondItem="Jrb-lv-G1o" secondAttribute="leadingMargin" constant="5" id="gtM-B2-W3z"/>
                                         <constraint firstItem="TCc-4Q-5Ac" firstAttribute="centerX" secondItem="Jrb-lv-G1o" secondAttribute="centerX" id="vPX-rh-9LS"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -739,6 +741,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Swipe Left To Assign!" id="trh-Ug-qwa">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bQL-4D-OFP">
+                            <color key="tintColor" red="0.30886844629999999" green="0.77870556189999995" blue="0.44214075450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addButtonTapped:" destination="eGR-i0-YAM" id="Q7w-vn-pGe"/>
                             </connections>
@@ -747,7 +750,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RA5-vg-iBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="1618"/>
+            <point key="canvasLocation" x="2860" y="1617.8410794602701"/>
         </scene>
         <!--History-->
         <scene sceneID="3oX-zW-Mcd">

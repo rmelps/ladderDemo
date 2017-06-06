@@ -44,6 +44,7 @@ class PromiseDisplayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
         if let tabVC = tabBarController as? CoachTabBarViewController {
             if let user = tabVC.selectedUser {
                 let uid = user.uid
