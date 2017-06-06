@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class ProfilesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
    
@@ -16,6 +17,11 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     let sectionInsets = UIEdgeInsets(top: 15.0, left: 10.0, bottom: 15.0, right: 10.0)
     let itemsPerRow: CGFloat = 2
     var specificTabBarController: UITabBarController!
+    
+    // File storage references
+    var storage: FIRStorage!
+    var storageRef: FIRStorageReference!
+    var imagesRef: FIRStorageReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,10 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
         } else {
             specificTabBarController = tabBarController as? UserTabBarViewController
         }
+        
+        storage = FIRStorage.storage()
+        storageRef = storage.reference()
+        imagesRef = storageRef.child("profileImages")
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,9 +95,26 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
                     cell.nameLabel.text = user.firstName
                     cell.uid = user
                     print("found children...")
+                    
+                    print(cell.uid?.photoPath)
                 
-                    if user.photoPath != "nil" {
+                    if cell.uid?.photoPath != "nil" {
                         print("found photo")
+                        // Create a reference to the file that will be downloaded
+                        let reference = self.storage.reference(forURL: cell.uid!.photoPath)
+                        // Download image at path to local memory with defined maximum size
+                        reference.data(withMaxSize: 10 * 1024 * 1024) { (data:Data?, error:Error?) in
+                            
+                            cell.activityIndicator.stopAnimating()
+                            cell.activityIndicator.isHidden = true
+                            
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                            if let data = data {
+                                cell.profileImageView.image = UIImage(data: data)!
+                            }
+                        }
                     } else {
                         cell.profileImageView.image = UIImage(named: "default-avatar")
                         cell.activityIndicator.stopAnimating()

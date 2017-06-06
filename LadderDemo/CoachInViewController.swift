@@ -8,13 +8,22 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
-class CoachInViewController: UIViewController {
+class CoachInViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var profilePicView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var homeScreenImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var logOutButton: UIButton!
+    
+    // File storage references
+    var storage: FIRStorage!
+    var storageRef: FIRStorageReference!
+    var imagesRef: FIRStorageReference!
     
     var coachTabBarController: CoachTabBarViewController!
     
@@ -30,9 +39,41 @@ class CoachInViewController: UIViewController {
         applyMotionEffect(toView: welcomeLabel, magnitude: -15)
         applyMotionEffect(toView: changePhotoButton, magnitude: -15)
         applyMotionEffect(toView: logOutButton, magnitude: -15)
+        
+        storage = FIRStorage.storage()
+        storageRef = storage.reference()
+        imagesRef = storageRef.child("profileImages")
+        
+        activityIndicator.startAnimating()
+        
+        if coachTabBarController.signedInCoach.photoPath != "nil" {
+            
+            // Create a reference to the file that will be downloaded
+            let reference = storage.reference(forURL: coachTabBarController.signedInCoach.photoPath)
+            
+            // Download image at path to local memory with defined maximum size
+            reference.data(withMaxSize: 10 * 1024 * 1024) { (data:Data?, error:Error?) in
+                
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let data = data {
+                    self.profilePicView.image = UIImage(data: data)!
+                }
+            }
+        } else {
+            self.profilePicView.image = UIImage(named: "default-avatar")
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        profilePicView.layer.cornerRadius = 4.0
+        profilePicView.clipsToBounds = true
+        
         self.view.setNeedsLayout()
     }
     
@@ -49,6 +90,20 @@ class CoachInViewController: UIViewController {
     }
     
     @IBAction func changePhotoButtonPressed(_ sender: UIButton) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .savedPhotosAlbum
+            
+            self.present(imagePicker, animated: true, completion: nil)
+            
+        } else {
+            print("Photo album not available")
+        }
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
@@ -67,5 +122,42 @@ class CoachInViewController: UIViewController {
         
         view.addMotionEffect(xMotion)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var image = UIImage()
+        image = info[UIImagePickerControllerEditedImage] as! UIImage
+        profilePicView.image = image
+        dismiss(animated: true) {
+            let user = self.coachTabBarController.signedInCoach
+            let imageToUpload = UIImageJPEGRepresentation(image, 0.5)
+            let ref = self.imagesRef.child(user!.uid)
+            
+            ref.put(imageToUpload!, metadata: nil, completion: { (metaData:FIRStorageMetadata?, error:Error?) in
+                guard let metaData = metaData else {
+                    let ac = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    ac.addAction(confirm)
+                    self.present(ac, animated: true, completion: nil)
+                    return
+                }
+                
+                let downloadURL = "\(metaData.downloadURL()!)"
+                
+                user?.photoPath = downloadURL
+                
+                let dbRef = self.coachTabBarController.coachDBRef.child(user!.uid)
+                
+                dbRef.setValue(user?.toAny())
+                
+                
+            })
+            
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
 }

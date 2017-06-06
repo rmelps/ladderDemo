@@ -86,6 +86,6 @@ class User {
     }
     
     func toAny() -> Any {
-        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": "nil"]
+        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": photoPath]
     }
 }

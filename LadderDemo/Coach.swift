@@ -45,6 +45,6 @@ class Coach: User {
     }
     
     override func toAny() -> Any {
-        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": "nil", "children": children ?? [String]()]
+        return ["uid":uid, "email":email, "firstName":firstName, "lastName": lastName, "photoPath": photoPath, "children": children ?? [String]()]
     }
 }
