@@ -1,8 +1,8 @@
-# ladderDemo
-7 day demo for Ladder.fit
+# Ladder Demo, How to Use the App
+How to use the 7 day demo for Ladder.fit
 
 ## Prerequisites
-I assume that you guys are familiar with Firebase/Cocoapods, but in order to run this project you will have to install the Firebase pods (by running $ pod install in a terminal window at the location of the downloaded Pod File). When doing so you need to add the app to a Firebase project on your Firebase console with the bundle id **com.j2mfd.LadderDemo**. The Home screens of both the Coach & User sides of the app utilize UIInterpolatingMotionEffects, so I would use a physical device when running it.
+I assume that you guys are familiar with Firebase/Cocoapods, but in order to run this project you may have to install the Firebase pods (by running $ pod install in a terminal window at the location of the downloaded Pod File). When doing so you need to add the app to a Firebase project on your Firebase console with the bundle id **com.j2mfd.LadderDemo**. The Home screens of both the Coach & User sides of the app utilize UIInterpolatingMotionEffects, so I would use a physical device when running it.
 
 ## Signing Up
 Coaches and Users Sign up and Sign in through shared windows. After choosing whether you are a coach or user and signing up, you can log in through the "Sign In" button thereafter, and the app will automatically recognize if you are signing into a Coach or User profile.
@@ -46,3 +46,4 @@ Coaches and Users Sign up and Sign in through shared windows. After choosing whe
 
 ### History Tab
 - Same as for the Coach side, the User can see historical data which can not be interacted with, only observed.
+
