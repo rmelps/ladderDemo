@@ -96,15 +96,17 @@ class AssignPromiseTableViewController: UITableViewController {
     
     func createPresets() {
         
-        let p1 = Promise(content: "Drink Water Bitch")
-        let p2 = Promise(content: "Give your mom a lil kiss")
-        let p3 = Promise(content: "Give your dad a lil kiss")
-        let p4 = Promise(content: "Show me to your parents")
+        let p1 = Promise(content: "Drink 8 Cups of Water")
+        let p2 = Promise(content: "Run a mile")
+        let p3 = Promise(content: "Drink Tea instead of Beer...Sometimes")
+        let p4 = Promise(content: "Get 8 Hours of Sleep")
+        let p5 = Promise(content: "Take the Stairs at Work")
         
         promiseStore.allPromises.append(p1)
         promiseStore.allPromises.append(p2)
         promiseStore.allPromises.append(p3)
         promiseStore.allPromises.append(p4)
+        promiseStore.allPromises.append(p5)
     }
 
     
