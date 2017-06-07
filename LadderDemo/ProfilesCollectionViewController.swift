@@ -28,8 +28,6 @@ class ProfilesCollectionViewController: UICollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: "Profile Cell")
-        
         collectionView?.allowsMultipleSelection = false
         
         if let tabVC = tabBarController as? CoachTabBarViewController {
