@@ -41,7 +41,7 @@ Coaches and Users Sign up and Sign in through shared windows. After choosing whe
 - A User will be able to see their progress for the current week on their assigned Promise.
 - The User will be able to complete their Promise here by pressing the Complete button. Promises can only be completed for the current day.
 
-### Coach Tab
+### Coaches Tab
 - The User is able to see ALL available coaches. The User's current coach is selected by default. Selecting any cell will change the User's coach to the selected Coach. Once selected, that Coach will be able to see the User in their side of the App, on the Users tab, and assign the User Promises.
 
 ### History Tab
