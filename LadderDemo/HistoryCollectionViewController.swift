@@ -23,7 +23,6 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
         if tabBarController is UserTabBarViewController {
             navigationItem.title = "My History"
         }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,14 +31,32 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
             
             if tabVC.selectedUser != nil {
                 navigationItem.title = "History of \(tabVC.selectedUser!.firstName) \(tabVC.selectedUser!.lastName)"
+                collectionView?.backgroundColor = UIColor(displayP3Red: 79/255, green: 199/255, blue: 113/255, alpha: 1.0)
             } else {
                 navigationItem.title = "Select a User first!"
+                collectionView?.backgroundColor = UIColor(displayP3Red: 96/255, green: 170/255, blue: 1.0, alpha: 1.0)
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.collectionView?.reloadData()
+        
+        if let tabVC = tabBarController as? CoachTabBarViewController {
+            
+            if tabVC.selectedUser == nil {
+                let ac = UIAlertController(title: "No User Selected!", message: "Select a User in the User Tab to view the History Tab", preferredStyle: .alert)
+                
+                let confirm = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                    self.tabBarController?.selectedIndex = 3
+                })
+                
+                ac.addAction(confirm)
+                
+                self.present(ac, animated: true, completion: nil)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +115,7 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
                         cell.promiseLabe.text = "User Was Not Assigned a Promise This Week"
                         cell.statusImageView.isHidden = true
                         cell.statusLabel.isHidden = true
+                        cell.progressView.progress = 0.0
                         return
                     }
                     
@@ -152,6 +170,7 @@ class HistoryCollectionViewController: UICollectionViewController, UICollectionV
                     cell.promiseLabe.text = "User Was Not Assigned a Promise This Week"
                     cell.statusImageView.isHidden = true
                     cell.statusLabel.isHidden = true
+                    cell.progressView.progress = 0.0
                     return
                 }
                 
